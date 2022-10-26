@@ -6,41 +6,45 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1080</width>
-    <height>720</height>
+    <width>1084</width>
+    <height>797</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: #1A0128;</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
-   <property name="styleSheet">
-    <string notr="true">background-color: #102124</string>
-   </property>
-   <widget class="QGroupBox" name="tasks_box">
+   <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>20</y>
-      <width>91</width>
-      <height>661</height>
+      <x>0</x>
+      <y>0</y>
+      <width>111</width>
+      <height>801</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <family>Rubik</family>
-      <pointsize>14</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
     <property name="styleSheet">
-     <string notr="true">color: #d6ae01;
-background-color: #32127a</string>
+     <string notr="true">background-color: #814D9F;</string>
     </property>
     <property name="title">
-     <string>Меню</string>
+     <string/>
     </property>
+    <widget class="QPushButton" name="pushButton">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>90</y>
+       <width>93</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>PushButton</string>
+     </property>
+    </widget>
    </widget>
   </widget>
  </widget>
