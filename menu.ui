@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: #1A0128;</string>
+   <string notr="true">background-color: #0e0524;</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QGroupBox" name="groupBox">
@@ -27,7 +27,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: #814D9F;</string>
+     <string notr="true">background-color: #32127a;</string>
     </property>
     <property name="title">
      <string/>
