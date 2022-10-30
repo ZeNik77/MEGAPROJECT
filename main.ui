@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>CalendarButton</class>
+ <widget class="QMainWindow" name="CalendarButton">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1084</width>
+    <width>1247</width>
     <height>797</height>
    </rect>
   </property>
@@ -55,6 +55,9 @@
        <height>71</height>
       </rect>
      </property>
+     <property name="mouseTracking">
+      <bool>true</bool>
+     </property>
      <property name="text">
       <string/>
      </property>
@@ -71,56 +74,108 @@
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="label_2">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>110</y>
-       <width>71</width>
-       <height>71</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="textFormat">
-      <enum>Qt::AutoText</enum>
-     </property>
-     <property name="pixmap">
-      <pixmap>../Users/Арсений/Desktop/xd.png</pixmap>
-     </property>
-     <property name="scaledContents">
-      <bool>false</bool>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_3">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>190</y>
-       <width>71</width>
-       <height>71</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="textFormat">
-      <enum>Qt::AutoText</enum>
-     </property>
-     <property name="pixmap">
-      <pixmap>../Users/Арсений/Desktop/3193182.png</pixmap>
-     </property>
-     <property name="scaledContents">
-      <bool>false</bool>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
+   </widget>
+   <widget class="QPushButton" name="HomeButton">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>30</y>
+      <width>71</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton:hover
+{
+ background-color: #2a0f66;
+}
+QPushButton
+{
+	background-color:#32127a;
+	border-radius: 3;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../Users/Арсений/Desktop/211.png</normaloff>../Users/Арсений/Desktop/211.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>999</width>
+      <height>999</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="CalendarButton_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>101</y>
+      <width>71</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton:hover
+{
+ background-color: #2a0f66;
+}
+QPushButton
+{
+	background-color:#32127a;
+	border-radius: 3;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../Users/Арсений/Desktop/xd.png</normaloff>../Users/Арсений/Desktop/xd.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>999</width>
+      <height>999</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="TasksButton">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>171</y>
+      <width>71</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton:hover
+{
+ background-color: #2a0f66;
+}
+QPushButton
+{
+	background-color:#32127a;
+	border-radius: 3;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../Users/Арсений/Desktop/3193182.png</normaloff>../Users/Арсений/Desktop/3193182.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>999</width>
+      <height>999</height>
+     </size>
+    </property>
    </widget>
   </widget>
  </widget>
