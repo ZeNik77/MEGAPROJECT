@@ -1,5 +1,17 @@
-print('Hello World!')
-a = int(input())
-print(a + 1)
-import os
-os.system('explorer https://rr.noordstar.me/xd-4a00e2e3')
+import sys
+
+from PyQt5 import uic  # Импортируем uic
+from PyQt5.QtWidgets import QApplication, QMainWindow
+
+
+class MyWidget(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi('main.ui', self)  # Загружаем дизайн
+
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    ex = MyWidget()
+    ex.show()
+    sys.exit(app.exec_())
