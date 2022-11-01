@@ -74,7 +74,7 @@ QPushButton
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="CalendarButton">
+       <widget class="QPushButton" name="TasksButton">
         <property name="enabled">
          <bool>true</bool>
         </property>
@@ -105,7 +105,7 @@ QPushButton
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="TasksButton">
+       <widget class="QPushButton" name="CalendarButton">
         <property name="styleSheet">
          <string notr="true">QPushButton:hover
 {
@@ -226,6 +226,116 @@ border-radius: 5px;</string>
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
         </property>
        </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_3">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>0</y>
+      <width>1211</width>
+      <height>721</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #E6E697;
+border: 2px solid gray;
+padding: 10px;
+border-radius: 5px;</string>
+    </property>
+    <property name="title">
+     <string>Расписание</string>
+    </property>
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>32</x>
+       <y>42</y>
+       <width>1121</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="1" column="2">
+       <widget class="QLabel" name="label_done">
+        <property name="text">
+         <string>Готово</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLabel" name="label_inprocess">
+        <property name="text">
+         <string>В процессе</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_todo">
+        <property name="text">
+         <string>Сделать</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" colspan="3">
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QPushButton" name="btn_todo">
+          <property name="styleSheet">
+           <string notr="true">QPushButton:hover
+{
+ background-color: #2a0f66;
+}
+QPushButton
+{
+	background-color:#32127a;
+	border-radius: 3;
+}</string>
+          </property>
+          <property name="text">
+           <string>Добавить...</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btn_inprocess">
+          <property name="styleSheet">
+           <string notr="true">QPushButton:hover
+{
+ background-color: #2a0f66;
+}
+QPushButton
+{
+	background-color:#32127a;
+	border-radius: 3;
+}</string>
+          </property>
+          <property name="text">
+           <string>Добавить...</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btn_done">
+          <property name="styleSheet">
+           <string notr="true">QPushButton:hover
+{
+ background-color: #2a0f66;
+}
+QPushButton
+{
+	background-color:#32127a;
+	border-radius: 3;
+}</string>
+          </property>
+          <property name="text">
+           <string>Добавить...</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
      </layout>
     </widget>

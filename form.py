@@ -49,25 +49,8 @@ class Ui_MainForm(object):
         self.HomeButton.setIconSize(QtCore.QSize(999, 999))
         self.HomeButton.setObjectName("HomeButton")
         self.verticalLayout.addWidget(self.HomeButton)
-        self.CalendarButton = QtWidgets.QPushButton(self.layoutWidget)
-        self.CalendarButton.setEnabled(True)
-        self.CalendarButton.setStyleSheet("QPushButton:hover\n"
-"{\n"
-" background-color: #2a0f66;\n"
-"}\n"
-"QPushButton\n"
-"{\n"
-"    background-color:#32127a;\n"
-"    border-radius: 3;\n"
-"}")
-        self.CalendarButton.setText("")
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("2.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.CalendarButton.setIcon(icon1)
-        self.CalendarButton.setIconSize(QtCore.QSize(999, 999))
-        self.CalendarButton.setObjectName("CalendarButton")
-        self.verticalLayout.addWidget(self.CalendarButton)
         self.TasksButton = QtWidgets.QPushButton(self.layoutWidget)
+        self.TasksButton.setEnabled(True)
         self.TasksButton.setStyleSheet("QPushButton:hover\n"
 "{\n"
 " background-color: #2a0f66;\n"
@@ -78,12 +61,29 @@ class Ui_MainForm(object):
 "    border-radius: 3;\n"
 "}")
         self.TasksButton.setText("")
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("3.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.TasksButton.setIcon(icon2)
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("2.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.TasksButton.setIcon(icon1)
         self.TasksButton.setIconSize(QtCore.QSize(999, 999))
         self.TasksButton.setObjectName("TasksButton")
         self.verticalLayout.addWidget(self.TasksButton)
+        self.CalendarButton = QtWidgets.QPushButton(self.layoutWidget)
+        self.CalendarButton.setStyleSheet("QPushButton:hover\n"
+"{\n"
+" background-color: #2a0f66;\n"
+"}\n"
+"QPushButton\n"
+"{\n"
+"    background-color:#32127a;\n"
+"    border-radius: 3;\n"
+"}")
+        self.CalendarButton.setText("")
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap("3.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.CalendarButton.setIcon(icon2)
+        self.CalendarButton.setIconSize(QtCore.QSize(999, 999))
+        self.CalendarButton.setObjectName("CalendarButton")
+        self.verticalLayout.addWidget(self.CalendarButton)
         self.AboutButton = QtWidgets.QPushButton(self.layoutWidget)
         self.AboutButton.setEnabled(True)
         self.AboutButton.setStyleSheet("QPushButton:hover\n"
@@ -128,6 +128,67 @@ class Ui_MainForm(object):
         self.label_devs.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.label_devs.setObjectName("label_devs")
         self.verticalLayout_2.addWidget(self.label_devs)
+        self.groupBox_3 = QtWidgets.QGroupBox(self.centralwidget)
+        self.groupBox_3.setGeometry(QtCore.QRect(70, 0, 1211, 721))
+        self.groupBox_3.setStyleSheet("color: #E6E697;\n"
+"border: 2px solid gray;\n"
+"padding: 10px;\n"
+"border-radius: 5px;")
+        self.groupBox_3.setObjectName("groupBox_3")
+        self.widget = QtWidgets.QWidget(self.groupBox_3)
+        self.widget.setGeometry(QtCore.QRect(32, 42, 1121, 121))
+        self.widget.setObjectName("widget")
+        self.gridLayout = QtWidgets.QGridLayout(self.widget)
+        self.gridLayout.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout.setObjectName("gridLayout")
+        self.label_done = QtWidgets.QLabel(self.widget)
+        self.label_done.setObjectName("label_done")
+        self.gridLayout.addWidget(self.label_done, 1, 2, 1, 1)
+        self.label_inprocess = QtWidgets.QLabel(self.widget)
+        self.label_inprocess.setObjectName("label_inprocess")
+        self.gridLayout.addWidget(self.label_inprocess, 1, 1, 1, 1)
+        self.label_todo = QtWidgets.QLabel(self.widget)
+        self.label_todo.setObjectName("label_todo")
+        self.gridLayout.addWidget(self.label_todo, 1, 0, 1, 1)
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.btn_todo = QtWidgets.QPushButton(self.widget)
+        self.btn_todo.setStyleSheet("QPushButton:hover\n"
+"{\n"
+" background-color: #2a0f66;\n"
+"}\n"
+"QPushButton\n"
+"{\n"
+"    background-color:#32127a;\n"
+"    border-radius: 3;\n"
+"}")
+        self.btn_todo.setObjectName("btn_todo")
+        self.horizontalLayout.addWidget(self.btn_todo)
+        self.btn_inprocess = QtWidgets.QPushButton(self.widget)
+        self.btn_inprocess.setStyleSheet("QPushButton:hover\n"
+"{\n"
+" background-color: #2a0f66;\n"
+"}\n"
+"QPushButton\n"
+"{\n"
+"    background-color:#32127a;\n"
+"    border-radius: 3;\n"
+"}")
+        self.btn_inprocess.setObjectName("btn_inprocess")
+        self.horizontalLayout.addWidget(self.btn_inprocess)
+        self.btn_done = QtWidgets.QPushButton(self.widget)
+        self.btn_done.setStyleSheet("QPushButton:hover\n"
+"{\n"
+" background-color: #2a0f66;\n"
+"}\n"
+"QPushButton\n"
+"{\n"
+"    background-color:#32127a;\n"
+"    border-radius: 3;\n"
+"}")
+        self.btn_done.setObjectName("btn_done")
+        self.horizontalLayout.addWidget(self.btn_done)
+        self.gridLayout.addLayout(self.horizontalLayout, 0, 0, 1, 3)
         MainForm.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainForm)
@@ -140,3 +201,10 @@ class Ui_MainForm(object):
         self.label_name.setText(_translate("MainForm", "Многофункциональный органайзер"))
         self.label_buttons.setText(_translate("MainForm", "Кнопки: Home, расписание / задачник, календарь, помощь"))
         self.label_devs.setText(_translate("MainForm", "Разработчики: Зеленов Никита и Веретенов Арсений"))
+        self.groupBox_3.setTitle(_translate("MainForm", "Расписание"))
+        self.label_done.setText(_translate("MainForm", "Готово"))
+        self.label_inprocess.setText(_translate("MainForm", "В процессе"))
+        self.label_todo.setText(_translate("MainForm", "Сделать"))
+        self.btn_todo.setText(_translate("MainForm", "Добавить..."))
+        self.btn_inprocess.setText(_translate("MainForm", "Добавить..."))
+        self.btn_done.setText(_translate("MainForm", "Добавить..."))
