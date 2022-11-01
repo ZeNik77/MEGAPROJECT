@@ -138,5 +138,5 @@ class Ui_MainForm(object):
         MainForm.setWindowTitle(_translate("MainForm", "MainWindow"))
         self.groupBox_2.setTitle(_translate("MainForm", "О приложении"))
         self.label_name.setText(_translate("MainForm", "Многофункциональный органайзер"))
-        self.label_buttons.setText(_translate("MainForm", "Кнопки: о нас, расписание и задачи, календарь"))
+        self.label_buttons.setText(_translate("MainForm", "Кнопки: Home, расписание / задачник, календарь, помощь"))
         self.label_devs.setText(_translate("MainForm", "Разработчики: Зеленов Никита и Веретенов Арсений"))
