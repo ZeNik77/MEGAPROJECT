@@ -210,7 +210,7 @@ border-radius: 5px;</string>
       <item>
        <widget class="QLabel" name="label_buttons">
         <property name="text">
-         <string>Кнопки: о нас, расписание и задачи, календарь</string>
+         <string>Кнопки: Home, расписание / задачник, календарь, помощь</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
