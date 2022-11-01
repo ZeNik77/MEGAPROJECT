@@ -28,7 +28,9 @@
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: #32127a;
-</string>
+border: 2px solid gray;
+padding: 10px;
+border-radius: 5px;</string>
     </property>
     <property name="title">
      <string/>
@@ -36,10 +38,10 @@
     <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>40</y>
-       <width>51</width>
-       <height>701</height>
+       <x>0</x>
+       <y>30</y>
+       <width>71</width>
+       <height>721</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
@@ -73,6 +75,9 @@ QPushButton
       </item>
       <item>
        <widget class="QPushButton" name="CalendarButton">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
         <property name="styleSheet">
          <string notr="true">QPushButton:hover
 {
@@ -127,24 +132,103 @@ QPushButton
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QPushButton" name="AboutButton">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton:hover
+{
+ background-color: #2a0f66;
+}
+QPushButton
+{
+	background-color:#32127a;
+	border-radius: 3;
+}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>4.png</normaloff>4.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>999</width>
+          <height>999</height>
+         </size>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </widget>
    <widget class="QGroupBox" name="groupBox_2">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>70</x>
-      <y>0</y>
+      <y>480</y>
       <width>1201</width>
-      <height>230</height>
+      <height>241</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: #E6E697;</string>
+     <string notr="true">color: #E6E697;
+border: 2px solid gray;
+padding: 10px;
+border-radius: 5px;</string>
     </property>
     <property name="title">
-     <string>Профиль</string>
+     <string>О приложении</string>
     </property>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>1101</width>
+       <height>161</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QLabel" name="label_name">
+        <property name="text">
+         <string>Многофункциональный органайзер</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_buttons">
+        <property name="text">
+         <string>Кнопки: о нас, расписание и задачи, календарь</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_devs">
+        <property name="text">
+         <string>Разработчики: Зеленов Никита и Веретенов Арсений</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
    </widget>
   </widget>
  </widget>

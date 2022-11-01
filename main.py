@@ -7,17 +7,17 @@ from form import Ui_MainForm as Form
 class MyWidget(QMainWindow, Form):
     def __init__(self):
         QFontDatabase.addApplicationFont('font/regular.otf')
-
-        
-        self.flag = True
         super().__init__()
         self.setupUi(self)
         self.flag = {}
         self.flag[self.groupBox_2] = True
-        self.flag[self.HomeButton] = True
-        self.HomeButton.clicked.connect(self.shide_GB2)
-        font = QFont('Manrope', 24)
-        self.groupBox_2.setFont(font)
+        self.AboutButton.clicked.connect(self.shide_GB2)
+        font_GB = QFont('Manrope', 24)
+        font_labels = QFont('Manrope', 18)
+        self.groupBox_2.setFont(font_GB)
+        self.label_name.setFont(font_labels)
+        self.label_buttons.setFont(font_labels)
+        self.label_devs.setFont(font_labels)
     
     def shide_GB2(self):
         if self.flag[self.groupBox_2]:

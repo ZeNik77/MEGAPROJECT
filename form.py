@@ -21,11 +21,13 @@ class Ui_MainForm(object):
         self.groupBox = QtWidgets.QGroupBox(self.centralwidget)
         self.groupBox.setGeometry(QtCore.QRect(0, -30, 71, 841))
         self.groupBox.setStyleSheet("background-color: #32127a;\n"
-"")
+"border: 2px solid gray;\n"
+"padding: 10px;\n"
+"border-radius: 5px;")
         self.groupBox.setTitle("")
         self.groupBox.setObjectName("groupBox")
         self.layoutWidget = QtWidgets.QWidget(self.groupBox)
-        self.layoutWidget.setGeometry(QtCore.QRect(10, 40, 51, 701))
+        self.layoutWidget.setGeometry(QtCore.QRect(0, 30, 71, 721))
         self.layoutWidget.setObjectName("layoutWidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.layoutWidget)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -48,6 +50,7 @@ class Ui_MainForm(object):
         self.HomeButton.setObjectName("HomeButton")
         self.verticalLayout.addWidget(self.HomeButton)
         self.CalendarButton = QtWidgets.QPushButton(self.layoutWidget)
+        self.CalendarButton.setEnabled(True)
         self.CalendarButton.setStyleSheet("QPushButton:hover\n"
 "{\n"
 " background-color: #2a0f66;\n"
@@ -81,10 +84,50 @@ class Ui_MainForm(object):
         self.TasksButton.setIconSize(QtCore.QSize(999, 999))
         self.TasksButton.setObjectName("TasksButton")
         self.verticalLayout.addWidget(self.TasksButton)
+        self.AboutButton = QtWidgets.QPushButton(self.layoutWidget)
+        self.AboutButton.setEnabled(True)
+        self.AboutButton.setStyleSheet("QPushButton:hover\n"
+"{\n"
+" background-color: #2a0f66;\n"
+"}\n"
+"QPushButton\n"
+"{\n"
+"    background-color:#32127a;\n"
+"    border-radius: 3;\n"
+"}")
+        self.AboutButton.setText("")
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap("4.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.AboutButton.setIcon(icon3)
+        self.AboutButton.setIconSize(QtCore.QSize(999, 999))
+        self.AboutButton.setObjectName("AboutButton")
+        self.verticalLayout.addWidget(self.AboutButton)
         self.groupBox_2 = QtWidgets.QGroupBox(self.centralwidget)
-        self.groupBox_2.setGeometry(QtCore.QRect(70, 0, 1201, 230))
-        self.groupBox_2.setStyleSheet("color: #E6E697;")
+        self.groupBox_2.setEnabled(False)
+        self.groupBox_2.setGeometry(QtCore.QRect(70, 480, 1201, 241))
+        self.groupBox_2.setStyleSheet("color: #E6E697;\n"
+"border: 2px solid gray;\n"
+"padding: 10px;\n"
+"border-radius: 5px;")
         self.groupBox_2.setObjectName("groupBox_2")
+        self.layoutWidget1 = QtWidgets.QWidget(self.groupBox_2)
+        self.layoutWidget1.setGeometry(QtCore.QRect(10, 50, 1101, 161))
+        self.layoutWidget1.setObjectName("layoutWidget1")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.layoutWidget1)
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.label_name = QtWidgets.QLabel(self.layoutWidget1)
+        self.label_name.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.label_name.setObjectName("label_name")
+        self.verticalLayout_2.addWidget(self.label_name)
+        self.label_buttons = QtWidgets.QLabel(self.layoutWidget1)
+        self.label_buttons.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.label_buttons.setObjectName("label_buttons")
+        self.verticalLayout_2.addWidget(self.label_buttons)
+        self.label_devs = QtWidgets.QLabel(self.layoutWidget1)
+        self.label_devs.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.label_devs.setObjectName("label_devs")
+        self.verticalLayout_2.addWidget(self.label_devs)
         MainForm.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainForm)
@@ -93,4 +136,7 @@ class Ui_MainForm(object):
     def retranslateUi(self, MainForm):
         _translate = QtCore.QCoreApplication.translate
         MainForm.setWindowTitle(_translate("MainForm", "MainWindow"))
-        self.groupBox_2.setTitle(_translate("MainForm", "Профиль"))
+        self.groupBox_2.setTitle(_translate("MainForm", "О приложении"))
+        self.label_name.setText(_translate("MainForm", "Многофункциональный органайзер"))
+        self.label_buttons.setText(_translate("MainForm", "Кнопки: о нас, расписание и задачи, календарь"))
+        self.label_devs.setText(_translate("MainForm", "Разработчики: Зеленов Никита и Веретенов Арсений"))
