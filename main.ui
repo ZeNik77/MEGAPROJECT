@@ -21,9 +21,9 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>0</y>
+      <y>-30</y>
       <width>71</width>
-      <height>801</height>
+      <height>841</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -33,13 +33,13 @@
     <property name="title">
      <string/>
     </property>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>20</y>
+       <y>40</y>
        <width>51</width>
-       <height>751</height>
+       <height>781</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
@@ -49,17 +49,12 @@
          <string notr="true">QPushButton:hover
 {
  background-color: #2a0f66;
-  margin-left: auto;
-  margin-right: auto;
 }
 QPushButton
 {
 	background-color:#32127a;
 	border-radius: 3;
-    margin-left: auto;
-    margin-right: auto;
-}
-</string>
+}</string>
         </property>
         <property name="text">
          <string/>

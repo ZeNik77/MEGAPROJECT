@@ -1,13 +1,21 @@
 import sys
 
-from PyQt5 import uic  # Импортируем uic
 from PyQt5.QtWidgets import QApplication, QMainWindow
+from form import Ui_CalendarButton as Form
 
-
-class MyWidget(QMainWindow):
+class MyWidget(QMainWindow, Form):
     def __init__(self):
+        self.flag = True
         super().__init__()
-        uic.loadUi('main.ui', self)  # Загружаем дизайн
+        self.setupUi(self)
+        self.CalendarButton_2.clicked.connect(self.shide)
+
+    def shide(self):
+        if self.flag:
+            self.HomeButton.hide()
+        else:
+            self.HomeButton.show()
+        self.flag = not self.flag
 
 
 if __name__ == '__main__':
