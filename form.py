@@ -583,7 +583,7 @@ class Ui_MainForm(object):
         self.btn_todo.setText(_translate("MainForm", "Добавить..."))
         self.btn_inprocess.setText(_translate("MainForm", "Добавить..."))
         self.btn_done.setText(_translate("MainForm", "Добавить..."))
-        self.groupBox_4.setTitle(_translate("MainForm", "Расписание"))
+        self.groupBox_4.setTitle(_translate("MainForm", "Календарь"))
         self.label_65.setText(_translate("MainForm", "TextLabel"))
         self.label_64.setText(_translate("MainForm", "TextLabel"))
         self.label_63.setText(_translate("MainForm", "TextLabel"))

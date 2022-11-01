@@ -356,7 +356,7 @@ padding: 10px;
 border-radius: 5px;</string>
     </property>
     <property name="title">
-     <string>Расписание</string>
+     <string>Календарь</string>
     </property>
     <widget class="QWidget" name="layoutWidget_2">
      <property name="geometry">
