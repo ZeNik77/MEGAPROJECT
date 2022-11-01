@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>CalendarButton</class>
- <widget class="QMainWindow" name="CalendarButton">
+ <class>MainForm</class>
+ <widget class="QMainWindow" name="MainForm">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1247</width>
-    <height>797</height>
+    <width>1280</width>
+    <height>720</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -39,7 +39,7 @@
        <x>10</x>
        <y>40</y>
        <width>51</width>
-       <height>781</height>
+       <height>701</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
@@ -72,7 +72,7 @@ QPushButton
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="CalendarButton_2">
+       <widget class="QPushButton" name="CalendarButton">
         <property name="styleSheet">
          <string notr="true">QPushButton:hover
 {
@@ -129,6 +129,22 @@ QPushButton
       </item>
      </layout>
     </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_2">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>0</y>
+      <width>1201</width>
+      <height>230</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #E6E697;</string>
+    </property>
+    <property name="title">
+     <string>Профиль</string>
+    </property>
    </widget>
   </widget>
  </widget>

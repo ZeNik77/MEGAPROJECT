@@ -11,12 +11,12 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_CalendarButton(object):
-    def setupUi(self, CalendarButton):
-        CalendarButton.setObjectName("CalendarButton")
-        CalendarButton.resize(1247, 797)
-        CalendarButton.setStyleSheet("background-color: #0e0524;")
-        self.centralwidget = QtWidgets.QWidget(CalendarButton)
+class Ui_MainForm(object):
+    def setupUi(self, MainForm):
+        MainForm.setObjectName("MainForm")
+        MainForm.resize(1280, 720)
+        MainForm.setStyleSheet("background-color: #0e0524;")
+        self.centralwidget = QtWidgets.QWidget(MainForm)
         self.centralwidget.setObjectName("centralwidget")
         self.groupBox = QtWidgets.QGroupBox(self.centralwidget)
         self.groupBox.setGeometry(QtCore.QRect(0, -30, 71, 841))
@@ -25,7 +25,7 @@ class Ui_CalendarButton(object):
         self.groupBox.setTitle("")
         self.groupBox.setObjectName("groupBox")
         self.layoutWidget = QtWidgets.QWidget(self.groupBox)
-        self.layoutWidget.setGeometry(QtCore.QRect(10, 40, 51, 781))
+        self.layoutWidget.setGeometry(QtCore.QRect(10, 40, 51, 701))
         self.layoutWidget.setObjectName("layoutWidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.layoutWidget)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -47,8 +47,8 @@ class Ui_CalendarButton(object):
         self.HomeButton.setIconSize(QtCore.QSize(999, 999))
         self.HomeButton.setObjectName("HomeButton")
         self.verticalLayout.addWidget(self.HomeButton)
-        self.CalendarButton_2 = QtWidgets.QPushButton(self.layoutWidget)
-        self.CalendarButton_2.setStyleSheet("QPushButton:hover\n"
+        self.CalendarButton = QtWidgets.QPushButton(self.layoutWidget)
+        self.CalendarButton.setStyleSheet("QPushButton:hover\n"
 "{\n"
 " background-color: #2a0f66;\n"
 "}\n"
@@ -57,13 +57,13 @@ class Ui_CalendarButton(object):
 "    background-color:#32127a;\n"
 "    border-radius: 3;\n"
 "}")
-        self.CalendarButton_2.setText("")
+        self.CalendarButton.setText("")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap("2.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.CalendarButton_2.setIcon(icon1)
-        self.CalendarButton_2.setIconSize(QtCore.QSize(999, 999))
-        self.CalendarButton_2.setObjectName("CalendarButton_2")
-        self.verticalLayout.addWidget(self.CalendarButton_2)
+        self.CalendarButton.setIcon(icon1)
+        self.CalendarButton.setIconSize(QtCore.QSize(999, 999))
+        self.CalendarButton.setObjectName("CalendarButton")
+        self.verticalLayout.addWidget(self.CalendarButton)
         self.TasksButton = QtWidgets.QPushButton(self.layoutWidget)
         self.TasksButton.setStyleSheet("QPushButton:hover\n"
 "{\n"
@@ -81,11 +81,16 @@ class Ui_CalendarButton(object):
         self.TasksButton.setIconSize(QtCore.QSize(999, 999))
         self.TasksButton.setObjectName("TasksButton")
         self.verticalLayout.addWidget(self.TasksButton)
-        CalendarButton.setCentralWidget(self.centralwidget)
+        self.groupBox_2 = QtWidgets.QGroupBox(self.centralwidget)
+        self.groupBox_2.setGeometry(QtCore.QRect(70, 0, 1201, 230))
+        self.groupBox_2.setStyleSheet("color: #E6E697;")
+        self.groupBox_2.setObjectName("groupBox_2")
+        MainForm.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(CalendarButton)
-        QtCore.QMetaObject.connectSlotsByName(CalendarButton)
+        self.retranslateUi(MainForm)
+        QtCore.QMetaObject.connectSlotsByName(MainForm)
 
-    def retranslateUi(self, CalendarButton):
+    def retranslateUi(self, MainForm):
         _translate = QtCore.QCoreApplication.translate
-        CalendarButton.setWindowTitle(_translate("CalendarButton", "MainWindow"))
+        MainForm.setWindowTitle(_translate("MainForm", "MainWindow"))
+        self.groupBox_2.setTitle(_translate("MainForm", "Профиль"))
