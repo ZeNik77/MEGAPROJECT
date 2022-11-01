@@ -10,7 +10,8 @@ class MyWidget(QMainWindow, Form):
         super().__init__()
         self.setupUi(self)
         self.flag = {}
-        self.flag[self.groupBox_2] = True
+        self.groupBox_2.hide()
+        self.flag[self.groupBox_2] = False
         self.AboutButton.clicked.connect(self.shide_GB2)
         font_GB = QFont('Manrope', 24)
         font_labels = QFont('Manrope', 18)
