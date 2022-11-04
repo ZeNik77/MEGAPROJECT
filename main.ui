@@ -248,38 +248,17 @@ border-radius: 5px;</string>
     <property name="title">
      <string>Расписание</string>
     </property>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>32</x>
        <y>42</y>
-       <width>1121</width>
-       <height>121</height>
+       <width>1141</width>
+       <height>651</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="1" column="2">
-       <widget class="QLabel" name="label_done">
-        <property name="text">
-         <string>Готово</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLabel" name="label_inprocess">
-        <property name="text">
-         <string>В процессе</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_todo">
-        <property name="text">
-         <string>Сделать</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0" colspan="3">
+      <item row="0" column="0" colspan="2">
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
          <widget class="QPushButton" name="btn_todo">
@@ -317,10 +296,12 @@ QPushButton
           </property>
          </widget>
         </item>
-        <item>
-         <widget class="QPushButton" name="btn_done">
-          <property name="styleSheet">
-           <string notr="true">QPushButton:hover
+       </layout>
+      </item>
+      <item row="0" column="2">
+       <widget class="QPushButton" name="btn_done">
+        <property name="styleSheet">
+         <string notr="true">QPushButton:hover
 {
  background-color: #2a0f66;
 }
@@ -329,11 +310,90 @@ QPushButton
 	background-color:#32127a;
 	border-radius: 3;
 }</string>
-          </property>
+        </property>
+        <property name="text">
+         <string>Добавить...</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <layout class="QVBoxLayout" name="layout_todo">
+        <item>
+         <widget class="QLabel" name="label_todo">
           <property name="text">
-           <string>Добавить...</string>
+           <string>Сделать</string>
           </property>
          </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_st1"/>
+        </item>
+        <item>
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="2">
+       <layout class="QVBoxLayout" name="layout_done">
+        <item>
+         <widget class="QLabel" name="label_done">
+          <property name="text">
+           <string>Готово</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_st3"/>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_3">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="1">
+       <layout class="QVBoxLayout" name="layout_inprocess">
+        <item>
+         <widget class="QLabel" name="label_inprocess">
+          <property name="text">
+           <string>В процессе</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_st2"/>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
         </item>
        </layout>
       </item>
@@ -971,6 +1031,10 @@ border-radius: 5px;</string>
      </layout>
     </widget>
    </widget>
+   <zorder>groupBox_4</zorder>
+   <zorder>groupBox</zorder>
+   <zorder>groupBox_2</zorder>
+   <zorder>groupBox_3</zorder>
   </widget>
  </widget>
  <resources/>
