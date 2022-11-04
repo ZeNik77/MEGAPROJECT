@@ -77,7 +77,7 @@ class MyWidget(QMainWindow, Form):
             self.groupBox_4.show()
         self.flag[self.groupBox_4] = not self.flag[self.groupBox_4]
 
-    def add_todo(self, layout):
+    def add_todo(self):
         self.clearSpacer(self.layout_todo)
         le = QLineEdit(self)
         le.setFont(self.font_labels)
@@ -85,7 +85,7 @@ class MyWidget(QMainWindow, Form):
         verticalSpacer = self.generate_spacer()
         self.layout_todo.addItem(verticalSpacer)
 
-    def add_inprocess(self, layout):
+    def add_inprocess(self):
         self.clearSpacer(self.layout_inprocess)
         le = QLineEdit(self)
         le.setFont(self.font_labels)
@@ -93,7 +93,7 @@ class MyWidget(QMainWindow, Form):
         verticalSpacer = self.generate_spacer()
         self.layout_inprocess.addItem(verticalSpacer)
 
-    def add_done(self, layout):
+    def add_done(self):
         self.clearSpacer(self.layout_done)
         le = QLineEdit(self)
         le.setFont(self.font_labels)
