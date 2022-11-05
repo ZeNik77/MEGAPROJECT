@@ -16,101 +16,53 @@ class MyWidget(QMainWindow, Form):
         self.flag[self.groupBox_2] = False
         self.flag[self.groupBox_3] = False
         self.flag[self.groupBox_4] = False
-        self.AboutButton.clicked.connect(self.shide_GB2)
-        self.TasksButton.clicked.connect(self.shide_GB3)
-        self.CalendarButton.clicked.connect(self.shide_GB4)
+        self.AboutButton.clicked.connect(lambda: self.shide(self.groupBox_2))
+        self.TasksButton.clicked.connect(lambda: self.shide(self.groupBox_3))
+        self.CalendarButton.clicked.connect(lambda: self.shide(self.groupBox_4))
+
         font_GB = QFont('Manrope', 24)
         self.font_labels = QFont('Manrope', 18)
         font_calendar = QFont('Manrope', 14)
-        self.groupBox_2.setFont(font_GB)
-        self.label_name.setFont(self.font_labels)
-        self.label_buttons.setFont(self.font_labels)
-        self.label_devs.setFont(self.font_labels)
-        self.btn_todo.setFont(self.font_labels)
-        self.btn_inprocess.setFont(self.font_labels)
-        self.btn_done.setFont(self.font_labels)
-        
-        self.groupBox_3.setFont(font_GB)
-        self.label_todo.setFont(self.font_labels)
-        self.label_inprocess.setFont(self.font_labels)
-        self.label_done.setFont(self.font_labels)
-        self.lineEdit_st1.setFont(self.font_labels)
-        self.lineEdit_st2.setFont(self.font_labels)
-        self.lineEdit_st3.setFont(self.font_labels)
+        arr_lbl = [self.label_name, self.label_buttons, self.label_devs, self.btn_todo, self.btn_inprocess, self.btn_done, self.label_todo, self.label_inprocess, self.label_done, self.lineEdit_st1, self.lineEdit_st2, self.lineEdit_st3]
+        arr_calendar = [self.label_week, self.label_Monday, self.label_Tuesday, self.label_Wednesday, self.label_Thursday, self.label_Friday, self.label_Saturday, self.label_Sunday, self.label_w1, self.label_w2, self.label_w3, self.label_w4, self.label_w5]
+        arr_GB = [self.groupBox_2, self.groupBox_3, self.groupBox_4]
+        for el in arr_lbl:
+            el.setFont(self.font_labels)
+        for el in arr_calendar:
+            el.setFont(font_calendar)
+        for el in arr_GB:
+            el.setFont(font_GB)
 
-        self.groupBox_4.setFont(font_GB)
-        self.label_week.setFont(font_calendar)
-        self.label_Monday.setFont(font_calendar)
-        self.label_Tuesday.setFont(font_calendar)
-        self.label_Wednesday.setFont(font_calendar)
-        self.label_Thursday.setFont(font_calendar)
-        self.label_Friday.setFont(font_calendar)
-        self.label_Saturday.setFont(font_calendar)
-        self.label_Sunday.setFont(font_calendar)
-        self.label_w1.setFont(font_calendar)
-        self.label_w2.setFont(font_calendar)
-        self.label_w3.setFont(font_calendar)
-        self.label_w4.setFont(font_calendar)
-        self.label_w5.setFont(font_calendar)
-
-        self.btn_todo.clicked.connect(self.add_todo)
-        self.btn_inprocess.clicked.connect(self.add_inprocess)
-        self.btn_done.clicked.connect(self.add_done)
+        self.btn_todo.clicked.connect(lambda: self.add_row(self.layout_todo))
+        self.btn_inprocess.clicked.connect(lambda: self.add_row(self.layout_inprocess))
+        self.btn_done.clicked.connect(lambda: self.add_row(self.layout_done))
 
 
-    def shide_GB2(self):
-        if self.flag[self.groupBox_2]:
-            self.groupBox_2.hide()
+    def shide(self, GB):
+        if self.flag[GB]:
+            GB.hide()
         else:
-            self.groupBox_2.show()
-        self.flag[self.groupBox_2] = not self.flag[self.groupBox_2]
-    def shide_GB3(self):
-        if self.flag[self.groupBox_3]:
-            self.groupBox_3.hide()
-        else:
-            self.groupBox_3.show()
-        self.flag[self.groupBox_3] = not self.flag[self.groupBox_3]
-    def shide_GB4(self):
-        if self.flag[self.groupBox_4]:
-            self.groupBox_4.hide()
-        else:
-            self.groupBox_4.show()
-        self.flag[self.groupBox_4] = not self.flag[self.groupBox_4]
+            GB.show()
+        self.flag[GB] = not self.flag[GB]
 
-    def add_todo(self):
-        self.clearSpacer(self.layout_todo)
+    def add_row(self, layout):
+        self.clearSpacer(layout)
         le = QLineEdit(self)
         le.setFont(self.font_labels)
-        self.layout_todo.addWidget(le)
+        layout.addWidget(le)
         verticalSpacer = self.generate_spacer()
-        self.layout_todo.addItem(verticalSpacer)
+        layout.addItem(verticalSpacer)
 
-    def add_inprocess(self):
-        self.clearSpacer(self.layout_inprocess)
-        le = QLineEdit(self)
-        le.setFont(self.font_labels)
-        self.layout_inprocess.addWidget(le)
-        verticalSpacer = self.generate_spacer()
-        self.layout_inprocess.addItem(verticalSpacer)
-
-    def add_done(self):
-        self.clearSpacer(self.layout_done)
-        le = QLineEdit(self)
-        le.setFont(self.font_labels)
-        self.layout_done.addWidget(le)
-        verticalSpacer = self.generate_spacer()
-        self.layout_done.addItem(verticalSpacer)
 
     def generate_spacer(self):
         return QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
 
     def clearSpacer(self, layout):
-        if layout is not None:
-            for i in range(layout.count()):
-                item = layout.itemAt(i)
-                if isinstance(item, QSpacerItem):
-                    layout.removeItem(item)
+        for i in range(layout.count()):
+            item = layout.itemAt(i)
+            if isinstance(item, QSpacerItem):
+                layout.removeItem(item)
 
 
 if __name__ == '__main__':
