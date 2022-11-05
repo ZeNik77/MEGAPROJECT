@@ -23,7 +23,7 @@ class MyWidget(QMainWindow, Form):
         font_GB = QFont('Manrope', 24)
         self.font_labels = QFont('Manrope', 18)
         font_calendar = QFont('Manrope', 14)
-        arr_lbl = [self.label_name, self.label_buttons, self.label_devs, self.btn_todo, self.btn_inprocess, self.btn_done, self.label_todo, self.label_inprocess, self.label_done, self.lineEdit_st1, self.lineEdit_st2, self.lineEdit_st3]
+        arr_lbl = [self.label_name, self.label_buttons, self.label_devs, self.btn_todo, self.btn_inprocess, self.btn_done, self.label_todo, self.label_inprocess, self.label_done, self.lineEdit_st1, self.lineEdit_st2, self.lineEdit_st3, self.btn_right1, self.btn_delete1, self.btn_left1, self.btn_right2, self.btn_delete2, self.btn_left2, self.btn_delete3]
         arr_calendar = [self.label_week, self.label_Monday, self.label_Tuesday, self.label_Wednesday, self.label_Thursday, self.label_Friday, self.label_Saturday, self.label_Sunday, self.label_w1, self.label_w2, self.label_w3, self.label_w4, self.label_w5]
         arr_GB = [self.groupBox_2, self.groupBox_3, self.groupBox_4]
         for el in arr_lbl:

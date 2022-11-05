@@ -136,15 +136,18 @@ class Ui_MainForm(object):
 "border-radius: 5px;")
         self.groupBox_3.setObjectName("groupBox_3")
         self.layoutWidget2 = QtWidgets.QWidget(self.groupBox_3)
-        self.layoutWidget2.setGeometry(QtCore.QRect(32, 42, 1141, 651))
+        self.layoutWidget2.setGeometry(QtCore.QRect(10, 40, 1181, 661))
         self.layoutWidget2.setObjectName("layoutWidget2")
         self.gridLayout = QtWidgets.QGridLayout(self.layoutWidget2)
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout.setHorizontalSpacing(20)
         self.gridLayout.setObjectName("gridLayout")
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.btn_todo = QtWidgets.QPushButton(self.layoutWidget2)
-        self.btn_todo.setStyleSheet("QPushButton:hover\n"
+        self.layout_inprocess = QtWidgets.QVBoxLayout()
+        self.layout_inprocess.setObjectName("layout_inprocess")
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        self.btn_left1 = QtWidgets.QPushButton(self.layoutWidget2)
+        self.btn_left1.setStyleSheet("QPushButton:hover\n"
 "{\n"
 " background-color: #2a0f66;\n"
 "}\n"
@@ -153,8 +156,109 @@ class Ui_MainForm(object):
 "    background-color:#32127a;\n"
 "    border-radius: 3;\n"
 "}")
-        self.btn_todo.setObjectName("btn_todo")
-        self.horizontalLayout.addWidget(self.btn_todo)
+        self.btn_left1.setObjectName("btn_left1")
+        self.horizontalLayout_3.addWidget(self.btn_left1)
+        self.lineEdit_st2 = QtWidgets.QLineEdit(self.layoutWidget2)
+        self.lineEdit_st2.setObjectName("lineEdit_st2")
+        self.horizontalLayout_3.addWidget(self.lineEdit_st2)
+        self.btn_right2 = QtWidgets.QPushButton(self.layoutWidget2)
+        self.btn_right2.setStyleSheet("QPushButton:hover\n"
+"{\n"
+" background-color: #2a0f66;\n"
+"}\n"
+"QPushButton\n"
+"{\n"
+"    background-color:#32127a;\n"
+"    border-radius: 3;\n"
+"}")
+        self.btn_right2.setObjectName("btn_right2")
+        self.horizontalLayout_3.addWidget(self.btn_right2)
+        self.btn_delete2 = QtWidgets.QPushButton(self.layoutWidget2)
+        self.btn_delete2.setStyleSheet("QPushButton:hover\n"
+"{\n"
+" background-color: #2a0f66;\n"
+"}\n"
+"QPushButton\n"
+"{\n"
+"    background-color:#32127a;\n"
+"    border-radius: 3;\n"
+"}")
+        self.btn_delete2.setObjectName("btn_delete2")
+        self.horizontalLayout_3.addWidget(self.btn_delete2)
+        self.layout_inprocess.addLayout(self.horizontalLayout_3)
+        spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.layout_inprocess.addItem(spacerItem)
+        self.gridLayout.addLayout(self.layout_inprocess, 3, 2, 1, 1)
+        self.layout_todo = QtWidgets.QVBoxLayout()
+        self.layout_todo.setObjectName("layout_todo")
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.lineEdit_st1 = QtWidgets.QLineEdit(self.layoutWidget2)
+        self.lineEdit_st1.setObjectName("lineEdit_st1")
+        self.horizontalLayout_2.addWidget(self.lineEdit_st1)
+        self.btn_right1 = QtWidgets.QPushButton(self.layoutWidget2)
+        self.btn_right1.setStyleSheet("QPushButton:hover\n"
+"{\n"
+" background-color: #2a0f66;\n"
+"}\n"
+"QPushButton\n"
+"{\n"
+"    background-color:#32127a;\n"
+"    border-radius: 3;\n"
+"}")
+        self.btn_right1.setObjectName("btn_right1")
+        self.horizontalLayout_2.addWidget(self.btn_right1)
+        self.btn_delete1 = QtWidgets.QPushButton(self.layoutWidget2)
+        self.btn_delete1.setStyleSheet("QPushButton:hover\n"
+"{\n"
+" background-color: #2a0f66;\n"
+"}\n"
+"QPushButton\n"
+"{\n"
+"    background-color:#32127a;\n"
+"    border-radius: 3;\n"
+"}")
+        self.btn_delete1.setObjectName("btn_delete1")
+        self.horizontalLayout_2.addWidget(self.btn_delete1)
+        self.layout_todo.addLayout(self.horizontalLayout_2)
+        spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.layout_todo.addItem(spacerItem1)
+        self.gridLayout.addLayout(self.layout_todo, 3, 0, 1, 1)
+        self.layout_done = QtWidgets.QVBoxLayout()
+        self.layout_done.setObjectName("layout_done")
+        self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        self.btn_left2 = QtWidgets.QPushButton(self.layoutWidget2)
+        self.btn_left2.setStyleSheet("QPushButton:hover\n"
+"{\n"
+" background-color: #2a0f66;\n"
+"}\n"
+"QPushButton\n"
+"{\n"
+"    background-color:#32127a;\n"
+"    border-radius: 3;\n"
+"}")
+        self.btn_left2.setObjectName("btn_left2")
+        self.horizontalLayout_4.addWidget(self.btn_left2)
+        self.lineEdit_st3 = QtWidgets.QLineEdit(self.layoutWidget2)
+        self.lineEdit_st3.setObjectName("lineEdit_st3")
+        self.horizontalLayout_4.addWidget(self.lineEdit_st3)
+        self.btn_delete3 = QtWidgets.QPushButton(self.layoutWidget2)
+        self.btn_delete3.setStyleSheet("QPushButton:hover\n"
+"{\n"
+" background-color: #2a0f66;\n"
+"}\n"
+"QPushButton\n"
+"{\n"
+"    background-color:#32127a;\n"
+"    border-radius: 3;\n"
+"}")
+        self.btn_delete3.setObjectName("btn_delete3")
+        self.horizontalLayout_4.addWidget(self.btn_delete3)
+        self.layout_done.addLayout(self.horizontalLayout_4)
+        spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.layout_done.addItem(spacerItem2)
+        self.gridLayout.addLayout(self.layout_done, 3, 3, 1, 1)
         self.btn_inprocess = QtWidgets.QPushButton(self.layoutWidget2)
         self.btn_inprocess.setStyleSheet("QPushButton:hover\n"
 "{\n"
@@ -166,8 +270,7 @@ class Ui_MainForm(object):
 "    border-radius: 3;\n"
 "}")
         self.btn_inprocess.setObjectName("btn_inprocess")
-        self.horizontalLayout.addWidget(self.btn_inprocess)
-        self.gridLayout.addLayout(self.horizontalLayout, 0, 0, 1, 2)
+        self.gridLayout.addWidget(self.btn_inprocess, 1, 2, 1, 1)
         self.btn_done = QtWidgets.QPushButton(self.layoutWidget2)
         self.btn_done.setStyleSheet("QPushButton:hover\n"
 "{\n"
@@ -179,40 +282,28 @@ class Ui_MainForm(object):
 "    border-radius: 3;\n"
 "}")
         self.btn_done.setObjectName("btn_done")
-        self.gridLayout.addWidget(self.btn_done, 0, 2, 1, 1)
-        self.layout_todo = QtWidgets.QVBoxLayout()
-        self.layout_todo.setObjectName("layout_todo")
-        self.label_todo = QtWidgets.QLabel(self.layoutWidget2)
-        self.label_todo.setObjectName("label_todo")
-        self.layout_todo.addWidget(self.label_todo)
-        self.lineEdit_st1 = QtWidgets.QLineEdit(self.layoutWidget2)
-        self.lineEdit_st1.setObjectName("lineEdit_st1")
-        self.layout_todo.addWidget(self.lineEdit_st1)
-        spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.layout_todo.addItem(spacerItem)
-        self.gridLayout.addLayout(self.layout_todo, 1, 0, 1, 1)
-        self.layout_done = QtWidgets.QVBoxLayout()
-        self.layout_done.setObjectName("layout_done")
-        self.label_done = QtWidgets.QLabel(self.layoutWidget2)
-        self.label_done.setObjectName("label_done")
-        self.layout_done.addWidget(self.label_done)
-        self.lineEdit_st3 = QtWidgets.QLineEdit(self.layoutWidget2)
-        self.lineEdit_st3.setObjectName("lineEdit_st3")
-        self.layout_done.addWidget(self.lineEdit_st3)
-        spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.layout_done.addItem(spacerItem1)
-        self.gridLayout.addLayout(self.layout_done, 1, 2, 1, 1)
-        self.layout_inprocess = QtWidgets.QVBoxLayout()
-        self.layout_inprocess.setObjectName("layout_inprocess")
+        self.gridLayout.addWidget(self.btn_done, 1, 3, 1, 1)
         self.label_inprocess = QtWidgets.QLabel(self.layoutWidget2)
         self.label_inprocess.setObjectName("label_inprocess")
-        self.layout_inprocess.addWidget(self.label_inprocess)
-        self.lineEdit_st2 = QtWidgets.QLineEdit(self.layoutWidget2)
-        self.lineEdit_st2.setObjectName("lineEdit_st2")
-        self.layout_inprocess.addWidget(self.lineEdit_st2)
-        spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.layout_inprocess.addItem(spacerItem2)
-        self.gridLayout.addLayout(self.layout_inprocess, 1, 1, 1, 1)
+        self.gridLayout.addWidget(self.label_inprocess, 0, 2, 1, 1)
+        self.label_todo = QtWidgets.QLabel(self.layoutWidget2)
+        self.label_todo.setObjectName("label_todo")
+        self.gridLayout.addWidget(self.label_todo, 0, 0, 1, 1)
+        self.btn_todo = QtWidgets.QPushButton(self.layoutWidget2)
+        self.btn_todo.setStyleSheet("QPushButton:hover\n"
+"{\n"
+" background-color: #2a0f66;\n"
+"}\n"
+"QPushButton\n"
+"{\n"
+"    background-color:#32127a;\n"
+"    border-radius: 3;\n"
+"}")
+        self.btn_todo.setObjectName("btn_todo")
+        self.gridLayout.addWidget(self.btn_todo, 1, 0, 1, 1)
+        self.label_done = QtWidgets.QLabel(self.layoutWidget2)
+        self.label_done.setObjectName("label_done")
+        self.gridLayout.addWidget(self.label_done, 0, 3, 1, 1)
         self.groupBox_4 = QtWidgets.QGroupBox(self.centralwidget)
         self.groupBox_4.setGeometry(QtCore.QRect(70, 0, 1211, 721))
         self.groupBox_4.setStyleSheet("color: #E6E697;\n"
@@ -605,12 +696,19 @@ class Ui_MainForm(object):
         self.label_buttons.setText(_translate("MainForm", "Кнопки: Home, расписание / задачник, календарь, помощь"))
         self.label_devs.setText(_translate("MainForm", "Разработчики: Зеленов Никита и Веретенов Арсений"))
         self.groupBox_3.setTitle(_translate("MainForm", "Расписание"))
-        self.btn_todo.setText(_translate("MainForm", "Добавить..."))
+        self.btn_left1.setText(_translate("MainForm", "<-"))
+        self.btn_right2.setText(_translate("MainForm", "->"))
+        self.btn_delete2.setText(_translate("MainForm", "X"))
+        self.btn_right1.setText(_translate("MainForm", "->"))
+        self.btn_delete1.setText(_translate("MainForm", "X"))
+        self.btn_left2.setText(_translate("MainForm", "<-"))
+        self.btn_delete3.setText(_translate("MainForm", "X"))
         self.btn_inprocess.setText(_translate("MainForm", "Добавить..."))
         self.btn_done.setText(_translate("MainForm", "Добавить..."))
-        self.label_todo.setText(_translate("MainForm", "Сделать"))
-        self.label_done.setText(_translate("MainForm", "Готово"))
         self.label_inprocess.setText(_translate("MainForm", "В процессе"))
+        self.label_todo.setText(_translate("MainForm", "Сделать"))
+        self.btn_todo.setText(_translate("MainForm", "Добавить..."))
+        self.label_done.setText(_translate("MainForm", "Готово"))
         self.groupBox_4.setTitle(_translate("MainForm", "Календарь"))
         self.label_65.setText(_translate("MainForm", "TextLabel"))
         self.label_64.setText(_translate("MainForm", "TextLabel"))

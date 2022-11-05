@@ -251,19 +251,24 @@ border-radius: 5px;</string>
     <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
-       <x>32</x>
-       <y>42</y>
-       <width>1141</width>
-       <height>651</height>
+       <x>10</x>
+       <y>40</y>
+       <width>1181</width>
+       <height>661</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="0" colspan="2">
-       <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="horizontalSpacing">
+       <number>20</number>
+      </property>
+      <item row="3" column="2">
+       <layout class="QVBoxLayout" name="layout_inprocess">
         <item>
-         <widget class="QPushButton" name="btn_todo">
-          <property name="styleSheet">
-           <string notr="true">QPushButton:hover
+         <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0,0,0,0">
+          <item>
+           <widget class="QPushButton" name="btn_left1">
+            <property name="styleSheet">
+             <string notr="true">QPushButton:hover
 {
  background-color: #2a0f66;
 }
@@ -272,33 +277,207 @@ QPushButton
 	background-color:#32127a;
 	border-radius: 3;
 }</string>
-          </property>
-          <property name="text">
-           <string>Добавить...</string>
-          </property>
-         </widget>
+            </property>
+            <property name="text">
+             <string>&lt;-</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="lineEdit_st2"/>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_right2">
+            <property name="styleSheet">
+             <string notr="true">QPushButton:hover
+{
+ background-color: #2a0f66;
+}
+QPushButton
+{
+	background-color:#32127a;
+	border-radius: 3;
+}</string>
+            </property>
+            <property name="text">
+             <string>-&gt;</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_delete2">
+            <property name="styleSheet">
+             <string notr="true">QPushButton:hover
+{
+ background-color: #2a0f66;
+}
+QPushButton
+{
+	background-color:#32127a;
+	border-radius: 3;
+}</string>
+            </property>
+            <property name="text">
+             <string>X</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
         <item>
-         <widget class="QPushButton" name="btn_inprocess">
-          <property name="styleSheet">
-           <string notr="true">QPushButton:hover
-{
- background-color: #2a0f66;
-}
-QPushButton
-{
-	background-color:#32127a;
-	border-radius: 3;
-}</string>
+         <spacer name="verticalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
           </property>
-          <property name="text">
-           <string>Добавить...</string>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
           </property>
-         </widget>
+         </spacer>
         </item>
        </layout>
       </item>
-      <item row="0" column="2">
+      <item row="3" column="0">
+       <layout class="QVBoxLayout" name="layout_todo">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0,0,0">
+          <item>
+           <widget class="QLineEdit" name="lineEdit_st1"/>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_right1">
+            <property name="styleSheet">
+             <string notr="true">QPushButton:hover
+{
+ background-color: #2a0f66;
+}
+QPushButton
+{
+	background-color:#32127a;
+	border-radius: 3;
+}</string>
+            </property>
+            <property name="text">
+             <string>-&gt;</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_delete1">
+            <property name="styleSheet">
+             <string notr="true">QPushButton:hover
+{
+ background-color: #2a0f66;
+}
+QPushButton
+{
+	background-color:#32127a;
+	border-radius: 3;
+}</string>
+            </property>
+            <property name="text">
+             <string>X</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item row="3" column="3">
+       <layout class="QVBoxLayout" name="layout_done">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="0,0,0">
+          <item>
+           <widget class="QPushButton" name="btn_left2">
+            <property name="styleSheet">
+             <string notr="true">QPushButton:hover
+{
+ background-color: #2a0f66;
+}
+QPushButton
+{
+	background-color:#32127a;
+	border-radius: 3;
+}</string>
+            </property>
+            <property name="text">
+             <string>&lt;-</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="lineEdit_st3"/>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_delete3">
+            <property name="styleSheet">
+             <string notr="true">QPushButton:hover
+{
+ background-color: #2a0f66;
+}
+QPushButton
+{
+	background-color:#32127a;
+	border-radius: 3;
+}</string>
+            </property>
+            <property name="text">
+             <string>X</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_3">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="2">
+       <widget class="QPushButton" name="btn_inprocess">
+        <property name="styleSheet">
+         <string notr="true">QPushButton:hover
+{
+ background-color: #2a0f66;
+}
+QPushButton
+{
+	background-color:#32127a;
+	border-radius: 3;
+}</string>
+        </property>
+        <property name="text">
+         <string>Добавить...</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
        <widget class="QPushButton" name="btn_done">
         <property name="styleSheet">
          <string notr="true">QPushButton:hover
@@ -316,86 +495,44 @@ QPushButton
         </property>
        </widget>
       </item>
+      <item row="0" column="2">
+       <widget class="QLabel" name="label_inprocess">
+        <property name="text">
+         <string>В процессе</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_todo">
+        <property name="text">
+         <string>Сделать</string>
+        </property>
+       </widget>
+      </item>
       <item row="1" column="0">
-       <layout class="QVBoxLayout" name="layout_todo">
-        <item>
-         <widget class="QLabel" name="label_todo">
-          <property name="text">
-           <string>Сделать</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="lineEdit_st1"/>
-        </item>
-        <item>
-         <spacer name="verticalSpacer">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
+       <widget class="QPushButton" name="btn_todo">
+        <property name="styleSheet">
+         <string notr="true">QPushButton:hover
+{
+ background-color: #2a0f66;
+}
+QPushButton
+{
+	background-color:#32127a;
+	border-radius: 3;
+}</string>
+        </property>
+        <property name="text">
+         <string>Добавить...</string>
+        </property>
+       </widget>
       </item>
-      <item row="1" column="2">
-       <layout class="QVBoxLayout" name="layout_done">
-        <item>
-         <widget class="QLabel" name="label_done">
-          <property name="text">
-           <string>Готово</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="lineEdit_st3"/>
-        </item>
-        <item>
-         <spacer name="verticalSpacer_3">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
-      </item>
-      <item row="1" column="1">
-       <layout class="QVBoxLayout" name="layout_inprocess">
-        <item>
-         <widget class="QLabel" name="label_inprocess">
-          <property name="text">
-           <string>В процессе</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="lineEdit_st2"/>
-        </item>
-        <item>
-         <spacer name="verticalSpacer_2">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
+      <item row="0" column="3">
+       <widget class="QLabel" name="label_done">
+        <property name="text">
+         <string>Готово</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
