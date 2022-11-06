@@ -15,28 +15,27 @@ class MyWidget(QMainWindow, Form):
         for i in self.tabs:
             i.hide()
             self.flag[i] = False
-        self.AboutButton.clicked.connect(lambda: self.shide(self.groupBox_2))
-        self.TasksButton.clicked.connect(lambda: self.shide(self.groupBox_3))
-        self.CalendarButton.clicked.connect(lambda: self.shide(self.groupBox_4))
+        self.btns_init()
+        self.fonts_init()
 
-        font_GB = QFont('Manrope', 24)
-        self.font_labels = QFont('Manrope', 18)
-        font_calendar = QFont('Manrope', 14)
-        arr_lbl = [self.label_name, self.label_buttons, self.label_devs, self.btn_todo, self.btn_inprocess,
-                   self.btn_done, self.label_todo, self.label_inprocess, self.label_done, self.lineEdit_st1,
-                   self.lineEdit_st2, self.lineEdit_st3, self.btn_right1, self.btn_delete1, self.btn_left1,
-                   self.btn_right2, self.btn_delete2, self.btn_left2, self.btn_delete3]
-        arr_GB = [self.groupBox_2, self.groupBox_3, self.groupBox_4]
-        self.calendarWidget.setFont(font_calendar)
-        for el in arr_lbl:
-            el.setFont(self.font_labels)
-        for el in arr_GB:
-            el.setFont(font_GB)
-
+    def btns_init(self):
         self.btn_todo.clicked.connect(lambda: self.add_row(self.layout_todo, 1))
         self.btn_inprocess.clicked.connect(lambda: self.add_row(self.layout_inprocess, 2))
         self.btn_done.clicked.connect(lambda: self.add_row(self.layout_done, 3))
+        self.AboutButton.clicked.connect(lambda: self.shide(self.groupBox_2))
+        self.TasksButton.clicked.connect(lambda: self.shide(self.groupBox_3))
+        self.CalendarButton.clicked.connect(lambda: self.shide(self.groupBox_4))
+    def fonts_init(self):
+        font_GB = QFont('Manrope', 24)
+        self.font_labels = QFont('Manrope', 18)
+        font_calendar = QFont('Manrope', 14)
 
+        for el in self.arr_lbl:
+            el.setFont(self.font_labels)
+        for el in self.arr_calendar:
+            el.setFont(font_calendar)
+        for el in self.arr_GB:
+            el.setFont(font_GB)
     def shide(self, GB):
         for i in self.tabs:
             i.hide()
