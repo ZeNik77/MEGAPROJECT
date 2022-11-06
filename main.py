@@ -2,7 +2,7 @@ import sys
 
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QSpacerItem, QSizePolicy, QHBoxLayout, QPushButton
 from PyQt5.QtGui import QFontDatabase, QFont
-from form import Ui_MainForm as Form
+from form2 import Ui_MainForm as Form
 
 
 class MyWidget(QMainWindow, Form):
@@ -26,14 +26,10 @@ class MyWidget(QMainWindow, Form):
                    self.btn_done, self.label_todo, self.label_inprocess, self.label_done, self.lineEdit_st1,
                    self.lineEdit_st2, self.lineEdit_st3, self.btn_right1, self.btn_delete1, self.btn_left1,
                    self.btn_right2, self.btn_delete2, self.btn_left2, self.btn_delete3]
-        arr_calendar = [self.label_week, self.label_Monday, self.label_Tuesday, self.label_Wednesday,
-                        self.label_Thursday, self.label_Friday, self.label_Saturday, self.label_Sunday, self.label_w1,
-                        self.label_w2, self.label_w3, self.label_w4, self.label_w5]
         arr_GB = [self.groupBox_2, self.groupBox_3, self.groupBox_4]
+        self.calendarWidget.setFont(font_calendar)
         for el in arr_lbl:
             el.setFont(self.font_labels)
-        for el in arr_calendar:
-            el.setFont(font_calendar)
         for el in arr_GB:
             el.setFont(font_GB)
 
