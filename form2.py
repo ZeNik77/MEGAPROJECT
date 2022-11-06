@@ -318,12 +318,24 @@ class Ui_MainForm(object):
         self.calendarWidget.setGridVisible(True)
         self.calendarWidget.setObjectName("calendarWidget")
         self.groupBox_5 = QtWidgets.QGroupBox(self.centralwidget)
-        self.groupBox_5.setGeometry(QtCore.QRect(110, 110, 341, 251))
+        self.groupBox_5.setGeometry(QtCore.QRect(70, 0, 1211, 721))
         self.groupBox_5.setStyleSheet("color: #E6E697;\n"
 "border: 2px solid gray;\n"
 "padding: 10px;\n"
 "border-radius: 5px;")
         self.groupBox_5.setObjectName("groupBox_5")
+        self.btn_closeGB5 = QtWidgets.QPushButton(self.groupBox_5)
+        self.btn_closeGB5.setGeometry(QtCore.QRect(1150, 0, 61, 51))
+        self.btn_closeGB5.setStyleSheet("QPushButton:hover\n"
+"{\n"
+" background-color: #2a0f66;\n"
+"}\n"
+"QPushButton\n"
+"{\n"
+"    background-color:#32127a;\n"
+"    border-radius: 3;\n"
+"}")
+        self.btn_closeGB5.setObjectName("btn_closeGB5")
         MainForm.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainForm)
@@ -352,3 +364,4 @@ class Ui_MainForm(object):
         self.label_done.setText(_translate("MainForm", "Готово"))
         self.groupBox_4.setTitle(_translate("MainForm", "Календарь"))
         self.groupBox_5.setTitle(_translate("MainForm", "Мероприятия:"))
+        self.btn_closeGB5.setText(_translate("MainForm", "<-"))

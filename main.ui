@@ -578,10 +578,10 @@ border-radius: 5px;</string>
    <widget class="QGroupBox" name="groupBox_5">
     <property name="geometry">
      <rect>
-      <x>110</x>
-      <y>110</y>
-      <width>341</width>
-      <height>251</height>
+      <x>70</x>
+      <y>0</y>
+      <width>1211</width>
+      <height>721</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -593,6 +593,30 @@ border-radius: 5px;</string>
     <property name="title">
      <string>Мероприятия:</string>
     </property>
+    <widget class="QPushButton" name="btn_closeGB5">
+     <property name="geometry">
+      <rect>
+       <x>1150</x>
+       <y>0</y>
+       <width>61</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton:hover
+{
+ background-color: #2a0f66;
+}
+QPushButton
+{
+	background-color:#32127a;
+	border-radius: 3;
+}</string>
+     </property>
+     <property name="text">
+      <string>&lt;-</string>
+     </property>
+    </widget>
    </widget>
   </widget>
  </widget>
