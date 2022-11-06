@@ -4,18 +4,17 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QSpacerItem, Q
 from PyQt5.QtGui import QFontDatabase, QFont
 from form import Ui_MainForm as Form
 
+
 class MyWidget(QMainWindow, Form):
     def __init__(self):
         QFontDatabase.addApplicationFont('font/regular.otf')
         super().__init__()
         self.setupUi(self)
         self.flag = {}
-        self.groupBox_2.hide()
-        self.groupBox_3.hide()
-        self.groupBox_4.hide()
-        self.flag[self.groupBox_2] = False
-        self.flag[self.groupBox_3] = False
-        self.flag[self.groupBox_4] = False
+        self.tabs = [self.groupBox_2, self.groupBox_3, self.groupBox_4]
+        for i in self.tabs:
+            i.hide()
+            self.flag[i] = False
         self.AboutButton.clicked.connect(lambda: self.shide(self.groupBox_2))
         self.TasksButton.clicked.connect(lambda: self.shide(self.groupBox_3))
         self.CalendarButton.clicked.connect(lambda: self.shide(self.groupBox_4))
@@ -23,8 +22,13 @@ class MyWidget(QMainWindow, Form):
         font_GB = QFont('Manrope', 24)
         self.font_labels = QFont('Manrope', 18)
         font_calendar = QFont('Manrope', 14)
-        arr_lbl = [self.label_name, self.label_buttons, self.label_devs, self.btn_todo, self.btn_inprocess, self.btn_done, self.label_todo, self.label_inprocess, self.label_done, self.lineEdit_st1, self.lineEdit_st2, self.lineEdit_st3, self.btn_right1, self.btn_delete1, self.btn_left1, self.btn_right2, self.btn_delete2, self.btn_left2, self.btn_delete3]
-        arr_calendar = [self.label_week, self.label_Monday, self.label_Tuesday, self.label_Wednesday, self.label_Thursday, self.label_Friday, self.label_Saturday, self.label_Sunday, self.label_w1, self.label_w2, self.label_w3, self.label_w4, self.label_w5]
+        arr_lbl = [self.label_name, self.label_buttons, self.label_devs, self.btn_todo, self.btn_inprocess,
+                   self.btn_done, self.label_todo, self.label_inprocess, self.label_done, self.lineEdit_st1,
+                   self.lineEdit_st2, self.lineEdit_st3, self.btn_right1, self.btn_delete1, self.btn_left1,
+                   self.btn_right2, self.btn_delete2, self.btn_left2, self.btn_delete3]
+        arr_calendar = [self.label_week, self.label_Monday, self.label_Tuesday, self.label_Wednesday,
+                        self.label_Thursday, self.label_Friday, self.label_Saturday, self.label_Sunday, self.label_w1,
+                        self.label_w2, self.label_w3, self.label_w4, self.label_w5]
         arr_GB = [self.groupBox_2, self.groupBox_3, self.groupBox_4]
         for el in arr_lbl:
             el.setFont(self.font_labels)
@@ -37,13 +41,10 @@ class MyWidget(QMainWindow, Form):
         self.btn_inprocess.clicked.connect(lambda: self.add_row(self.layout_inprocess, 2))
         self.btn_done.clicked.connect(lambda: self.add_row(self.layout_done, 3))
 
-
     def shide(self, GB):
-        if self.flag[GB]:
-            GB.hide()
-        else:
-            GB.show()
-        self.flag[GB] = not self.flag[GB]
+        for i in self.tabs:
+            i.hide()
+        GB.show()
 
     def add_row(self, layout, type):
         self.clearSpacer(layout)
@@ -94,23 +95,20 @@ class MyWidget(QMainWindow, Form):
         layout.addLayout(lt)
         verticalSpacer = self.generate_spacer()
         layout.addItem(verticalSpacer)
-        
 
     def setStyleBtn(self, button):
         button.setStyleSheet("QPushButton:hover\n"
-                        "{\n"
-                        " background-color: #2a0f66;\n"
-                        "}\n"
-                        "QPushButton\n"
-                        "{\n"
-                        "    background-color:#32127a;\n"
-                        "    border-radius: 3;\n"
-                        "}")
-
+                             "{\n"
+                             " background-color: #2a0f66;\n"
+                             "}\n"
+                             "QPushButton\n"
+                             "{\n"
+                             "    background-color:#32127a;\n"
+                             "    border-radius: 3;\n"
+                             "}")
 
     def generate_spacer(self):
         return QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-
 
     def clearSpacer(self, layout):
         for i in range(layout.count()):
