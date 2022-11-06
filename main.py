@@ -1,7 +1,8 @@
 import sys
 
-from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QSpacerItem, QSizePolicy, QHBoxLayout, QPushButton
+from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QSpacerItem, QSizePolicy, QHBoxLayout, QPushButton, QLabel
 from PyQt5.QtGui import QFontDatabase, QFont
+from PyQt5.QtCore import Qt
 from form2 import Ui_MainForm as Form
 
 
@@ -26,6 +27,7 @@ class MyWidget(QMainWindow, Form):
         self.TasksButton.clicked.connect(lambda: self.shide(self.groupBox_3))
         self.CalendarButton.clicked.connect(lambda: self.shide(self.groupBox_4))
         self.btn_closeGB5.clicked.connect(lambda: self.groupBox_5.hide())
+        self.calendarWidget.clicked.connect(self.get_date)
     def fonts_init(self):
         font_GB = QFont('Manrope', 24)
         self.font_labels = QFont('Manrope', 18)
@@ -118,6 +120,25 @@ class MyWidget(QMainWindow, Form):
             item = layout.itemAt(i)
             if isinstance(item, QSpacerItem):
                 layout.removeItem(item)
+    
+    def clearLayout(self, layout):
+        for i in range(layout.count()):
+            item = layout.itemAt(i)
+            layout.removeItem(item)
+
+    def get_date(self):
+        self.clearLayout(self.layout_events)
+        # здесь будет куча кода по показу всего
+        self.clicked_year = self.calendarWidget.selectedDate().year()
+        self.clicked_month = self.calendarWidget.selectedDate().month()
+        self.clicked_day = self.calendarWidget.selectedDate().day()
+        label = QLabel()
+        label.setFont(self.font_labels)
+        label.setText(f'Мероприятия на {self.clicked_year}.{self.clicked_month}.{self.clicked_day}:')
+        label.setAlignment(Qt.AlignLeft)
+        self.layout_events.addWidget(label)
+        self.groupBox_5.show()
+
 
 
 if __name__ == '__main__':

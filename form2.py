@@ -336,6 +336,12 @@ class Ui_MainForm(object):
 "    border-radius: 3;\n"
 "}")
         self.btn_closeGB5.setObjectName("btn_closeGB5")
+        self.verticalLayoutWidget = QtWidgets.QWidget(self.groupBox_5)
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(40, 40, 471, 561))
+        self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
+        self.layout_events = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
+        self.layout_events.setContentsMargins(0, 0, 0, 0)
+        self.layout_events.setObjectName("layout_events")
         MainForm.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainForm)

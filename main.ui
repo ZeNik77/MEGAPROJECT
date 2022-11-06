@@ -617,6 +617,17 @@ QPushButton
       <string>&lt;-</string>
      </property>
     </widget>
+    <widget class="QWidget" name="verticalLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>40</y>
+       <width>1101</width>
+       <height>641</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="layout_events"/>
+    </widget>
    </widget>
   </widget>
  </widget>
