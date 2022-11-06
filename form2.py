@@ -313,7 +313,17 @@ class Ui_MainForm(object):
         self.groupBox_4.setObjectName("groupBox_4")
         self.calendarWidget = QtWidgets.QCalendarWidget(self.groupBox_4)
         self.calendarWidget.setGeometry(QtCore.QRect(30, 50, 1131, 631))
+        self.calendarWidget.setAutoFillBackground(False)
+        self.calendarWidget.setStyleSheet("alternate-background-color: #32127a;")
+        self.calendarWidget.setGridVisible(True)
         self.calendarWidget.setObjectName("calendarWidget")
+        self.groupBox_5 = QtWidgets.QGroupBox(self.centralwidget)
+        self.groupBox_5.setGeometry(QtCore.QRect(110, 110, 341, 251))
+        self.groupBox_5.setStyleSheet("color: #E6E697;\n"
+"border: 2px solid gray;\n"
+"padding: 10px;\n"
+"border-radius: 5px;")
+        self.groupBox_5.setObjectName("groupBox_5")
         MainForm.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainForm)
@@ -341,3 +351,4 @@ class Ui_MainForm(object):
         self.btn_todo.setText(_translate("MainForm", "Добавить..."))
         self.label_done.setText(_translate("MainForm", "Готово"))
         self.groupBox_4.setTitle(_translate("MainForm", "Календарь"))
+        self.groupBox_5.setTitle(_translate("MainForm", "Мероприятия:"))

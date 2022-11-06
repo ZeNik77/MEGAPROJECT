@@ -10,11 +10,11 @@ class MyWidget(QMainWindow, Form):
         QFontDatabase.addApplicationFont('font/regular.otf')
         super().__init__()
         self.setupUi(self)
-        self.flag = {}
-        self.tabs = [self.groupBox_2, self.groupBox_3, self.groupBox_4]
+        # self.flag = {}
+        self.tabs = [self.groupBox_2, self.groupBox_3, self.groupBox_4, self.groupBox_5]
         for i in self.tabs:
             i.hide()
-            self.flag[i] = False
+            # self.flag[i] = False
         self.btns_init()
         self.fonts_init()
 
@@ -36,8 +36,7 @@ class MyWidget(QMainWindow, Form):
         # self.arr_calendar = [self.label_week, self.label_Monday, self.label_Tuesday, self.label_Wednesday,
         #                 self.label_Thursday, self.label_Friday, self.label_Saturday, self.label_Sunday, self.label_w1,
         #                 self.label_w2, self.label_w3, self.label_w4, self.label_w5]
-        arr_GB = [self.groupBox_2, self.groupBox_3, self.groupBox_4]
-        for el in arr_GB:
+        for el in self.tabs:
             el.setFont(font_GB)
         for el in arr_lbl:
             el.setFont(self.font_labels)
