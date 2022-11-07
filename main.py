@@ -163,14 +163,12 @@ class MyWidget(QMainWindow, Form):
         minute = []
         done = []
         layouts = []
+
         for i in range(len(events)):
             layouts.append(QVBoxLayout())
             id.append(events[i][0])
             name.append(events[i][1])
             desc.append(events[i][2])
-            # year.append(events[i][3])
-            # month.append(events[i][4])
-            # day.append(events[i][5])
             hour.append(events[i][6])
             minute.append(events[i][7])
             done.append(events[i][8])
@@ -196,8 +194,7 @@ class MyWidget(QMainWindow, Form):
             btn_delete[i].setFont(font)
             btn_delete[i].setText('Удалить мероприятие')
             self.setStyleBtn(btn_delete[i])
-            btn_delete[i].clicked.connect(lambda: self.delete_event(id[i]))
-            
+            btn_delete[i].clicked.connect(lambda x, b=int(id[i]): self.delete_event(b))
             layouts[i].addWidget(label_name[i])
             layouts[i].addWidget(label_desc[i])
             layouts[i].addWidget(label_time[i])
@@ -205,6 +202,7 @@ class MyWidget(QMainWindow, Form):
             layouts[i].addWidget(cb[i])
             layouts[i].addWidget(btn_delete[i])
             self.layout_events.addLayout(layouts[i])
+        print(id)
         self.groupBox_5.show()
     
     def add_event(self, name, desc, year, month, day, hour, minute):
@@ -219,8 +217,8 @@ class MyWidget(QMainWindow, Form):
         self.ex.hide()
         self.get_date()
     
-    def delete_event(self, *args):
-        print(args)
+    def delete_event(self, arg):
+        print(arg)
         # con = sqlite3.connect('main.sqlite3')
         # cur = con.cursor()
         # cur.execute("DELETE FROM EVENTS WHERE ID = ?", (id,))
