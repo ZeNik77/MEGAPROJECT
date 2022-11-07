@@ -29,6 +29,7 @@ class MyWidget(QMainWindow, Form):
         self.CalendarButton.clicked.connect(lambda: self.shide(self.groupBox_4))
         self.btn_closeGB5.clicked.connect(self.hide_GB5)
         self.calendarWidget.clicked.connect(self.get_date)
+        self.btn_add_event.clicked.connect(lambda: self.add_event(self.clicked_year, self.clicked_month, self.clicked_day))
     def fonts_init(self):
         font_GB = QFont('Manrope', 24)
         self.font_labels = QFont('Manrope', 18)
@@ -141,55 +142,92 @@ class MyWidget(QMainWindow, Form):
         con = sqlite3.connect('main.sqlite3')
         cur = con.cursor()
         events = cur.execute(f"SELECT * FROM EVENTS WHERE YEAR = {self.clicked_year} AND  MONTH = {self.clicked_month} AND DAY = {self.clicked_day}").fetchall()
+        font = QFont('Manrope', 14)
+        le_name = []
+        le_desc = []
+        label_time = []
+        te = []
+        cb = []
+        btn_update = []
+        id = []
+        name = []
+        desc = []
+        hour = []
+        minute = []
+        done = []
+        c = -1
         for el in events:
+            c += 1
             layout = QVBoxLayout()
-            id = el[0]
-            name = el[1]
-            desc = el[2]
-            year = el[3]
-            month = el[4]
-            day = el[5]
-            hour = el[6]
-            minute = el[7]
-            done = el[8]
-            le_name = QLineEdit()
-            le_name.setFont(QFont('Manrope', 24))
-            le_name.setText(name)
+            id.append(el[0])
+            name.append(el[1])
+            desc.append(el[2])
+            # year.append(el[3])
+            # month.append(el[4])
+            # day.append(el[5])
+            hour.append(el[6])
+            minute.append(el[7])
+            done.append(el[8])
+            le_name.append(QLineEdit())
+            le_name[c].setFont(QFont('Manrope', 24))
+            le_name[c].setText(name[c])
 
-            le_desc = QTextEdit()
-            le_desc.setFont(self.font_labels)
-            le_desc.setText(desc)
+            le_desc.append(QTextEdit())
+            le_desc[c].setFont(font)
+            le_desc[c].setText(desc[c])
 
-            label_time = QLabel()
-            label_time.setText('Дедлайн:')
-            label_time.setFont(self.font_labels)
+            label_time.append(QLabel())
+            label_time[c].setText('Дедлайн:')
+            label_time[c].setFont(font)
 
-            te = QTimeEdit()
-            te.setFont(self.font_labels)
-            te.setTime(QTime(hour, minute, 00))
+            te.append(QTimeEdit())
+            te[c].setFont(font)
+            te[c].setTime(QTime(hour[c], minute[c], 00))
 
-            cb = QCheckBox()
-            cb.stateChanged.connect(lambda: self.func_GB5(id, layout, 1))
+            cb.append(QCheckBox())
 
-            btn_update = QPushButton()
-            btn_update.setFont(self.font_labels)
-            btn_update.setText('Обновить')
-            self.setStyleBtn(btn_update)
-            btn_update.clicked.connect(lambda: self.func_GB5(id, layout, 0))
+            btn_update.append(QPushButton())
+            btn_update[c].setFont(font)
+            btn_update[c].setText('Обновить')
+            self.setStyleBtn(btn_update[c])
             
-            layout.addWidget(le_name)
-            layout.addWidget(le_desc)
-            layout.addWidget(label_time)
-            layout.addWidget(te)
-            layout.addWidget(cb)
-            layout.addWidget(btn_update)
+            layout.addWidget(le_name[c])
+            layout.addWidget(le_desc[c])
+            layout.addWidget(label_time[c])
+            layout.addWidget(te[c])
+            layout.addWidget(cb[c])
+            layout.addWidget(btn_update[c])
+
+            layout.itemAt(layout.count() - 1).widget().clicked.connect(lambda: self.update_DB(id[c], name[c], desc[c], hour[c], minute[c], done[c])) # подключаем кнопку к функции обновления
+            layout.itemAt(4).widget().clicked.connect(lambda: self.update_DB(id[c], name[c], desc[c], hour[c], minute[c], not done[c])) # подключаем галочку к функции обновления
+            # да, массив лайаутов я уже делал
+
             self.layout_events.addLayout(layout)
-            print('here')
         self.groupBox_5.show()
+    
+    def add_event(self, year, month, day):
+        con = sqlite3.connect('main.sqlite3')
+        cur = con.cursor()
+        cur.execute(f"INSERT INTO EVENTS (year, month, day) VALUES ({year}, {month}, {day})")
+        con.commit()
+        con.close()
+        self.get_date()
 
-    def func_GB5(self, id, layout, type):
-        pass
 
+    def update_DB(self, id, name, desc, hour, minute, done):
+        #   name desc zuynya time zuynya zuynya
+        # con = sqlite3.connect('main.sqlite3')
+        # cur = con.cursor()
+        #   1 NAME 2 DESCRIPTION 6 HOUR 7 MINUTE 8 DONE 
+        print(id, name)
+        # cur.execute(f"UPDATE EVENTS SET NAME = {layout.itemAt(0).widget().text()}  WHERE id={id}")
+        # cur.execute(f"UPDATE EVENTS SET DESCRIPTION = {layout.itemAt(1).widget().toPlainText()} WHERE id={id}")
+        # cur.execute(f"UPDATE EVENTS SET HOUR = {layout.itemAt(3).widget().time().hour()} WHERE id={id}")
+        # cur.execute(f"UPDATE EVENTS SET MINUTE = {layout.itemAt(3).widget().time().minute()} WHERE id={id}")
+        # cur.execute(f"UPDATE EVENTSSET DONE = {done} WHERE id={id}")
+        # con.commit()
+        # con.close()
+        
     def hide_GB5(self):
         self.clearLayout(self.layout_events)
         self.groupBox_5.hide()
