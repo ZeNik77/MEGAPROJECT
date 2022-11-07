@@ -21,7 +21,7 @@ class VoiceAssistant:
         sys.exit(0)
 
     def start(self):
-        model = Model('rumodel')
+        model = Model('Assets/Models/rumodel')
         recognizer = KaldiRecognizer(model, 16000)
         cap = pyaudio.PyAudio()
         stream = cap.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=8192)

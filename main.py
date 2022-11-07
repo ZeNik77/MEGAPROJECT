@@ -9,7 +9,7 @@ import sqlite3
 
 class MyWidget(QMainWindow, Form):
     def __init__(self):
-        QFontDatabase.addApplicationFont('font/regular.otf')
+        QFontDatabase.addApplicationFont('Assets/font/regular.otf')
         super().__init__()
         self.setupUi(self)
         # self.flag = {}
@@ -139,7 +139,7 @@ class MyWidget(QMainWindow, Form):
         self.clicked_month = self.calendarWidget.selectedDate().month()
         self.clicked_day = self.calendarWidget.selectedDate().day()
         self.groupBox_5.setTitle(f'Мероприятия на {self.clicked_day}.{self.clicked_month}.{self.clicked_year}:')
-        con = sqlite3.connect('main.sqlite3')
+        con = sqlite3.connect('Assets/Databases/main.sqlite3')
         cur = con.cursor()
         events = cur.execute(f"SELECT * FROM EVENTS WHERE YEAR = {self.clicked_year} AND  MONTH = {self.clicked_month} AND DAY = {self.clicked_day}").fetchall()
         font = QFont('Manrope', 14)
@@ -206,7 +206,7 @@ class MyWidget(QMainWindow, Form):
         self.groupBox_5.show()
     
     def add_event(self, year, month, day):
-        con = sqlite3.connect('main.sqlite3')
+        con = sqlite3.connect('Assets/Databases/main.sqlite3')
         cur = con.cursor()
         cur.execute(f"INSERT INTO EVENTS (year, month, day) VALUES ({year}, {month}, {day})")
         con.commit()
@@ -216,7 +216,7 @@ class MyWidget(QMainWindow, Form):
 
     def update_DB(self, id, name, desc, hour, minute, done):
         #   name desc zuynya time zuynya zuynya
-        # con = sqlite3.connect('main.sqlite3')
+        # con = sqlite3.connect('Assets/Databases/main.sqlite3')
         # cur = con.cursor()
         #   1 NAME 2 DESCRIPTION 6 HOUR 7 MINUTE 8 DONE 
         print(id, name)
