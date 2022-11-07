@@ -593,17 +593,34 @@ border-radius: 5px;</string>
     <property name="title">
      <string>Мероприятия:</string>
     </property>
-    <widget class="QPushButton" name="btn_closeGB5">
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+    </property>
+    <widget class="QWidget" name="verticalLayoutWidget">
      <property name="geometry">
       <rect>
-       <x>1150</x>
+       <x>40</x>
+       <y>60</y>
+       <width>1101</width>
+       <height>621</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="layout_events"/>
+    </widget>
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>1090</x>
        <y>0</y>
-       <width>61</width>
+       <width>121</width>
        <height>51</height>
       </rect>
      </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton:hover
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QPushButton" name="btn_add_event">
+        <property name="styleSheet">
+         <string notr="true">QPushButton:hover
 {
  background-color: #2a0f66;
 }
@@ -612,21 +629,31 @@ QPushButton
 	background-color:#32127a;
 	border-radius: 3;
 }</string>
-     </property>
-     <property name="text">
-      <string>&lt;-</string>
-     </property>
-    </widget>
-    <widget class="QWidget" name="verticalLayoutWidget">
-     <property name="geometry">
-      <rect>
-       <x>40</x>
-       <y>40</y>
-       <width>1101</width>
-       <height>641</height>
-      </rect>
-     </property>
-     <layout class="QVBoxLayout" name="layout_events"/>
+        </property>
+        <property name="text">
+         <string>+</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_closeGB5">
+        <property name="styleSheet">
+         <string notr="true">QPushButton:hover
+{
+ background-color: #2a0f66;
+}
+QPushButton
+{
+	background-color:#32127a;
+	border-radius: 3;
+}</string>
+        </property>
+        <property name="text">
+         <string>&lt;-</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </widget>
   </widget>
