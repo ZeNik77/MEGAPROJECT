@@ -59,6 +59,7 @@ class MyWidget(QMainWindow, Form):
     def add_row(self, type, text):
         le = QLineEdit(self)
         le.setFont(self.font_labels)
+        le.setText(text)
         lt = QHBoxLayout()
         if type == 1:
             layout = self.layout_todo
