@@ -31,13 +31,13 @@ class MyWidget(QMainWindow, Form):
         self.btn_inprocess.clicked.connect(lambda: self.add_row(2, ''))
         self.btn_done.clicked.connect(lambda: self.add_row(3, ''))
         self.AboutButton.clicked.connect(lambda: self.shide(self.groupBox_2))
-        self.TasksButton.clicked.connect(lambda: self.shide(self.groupBox_3))
+        self.TasksButton.clicked.connect(self.get_tasks)
         self.CalendarButton.clicked.connect(lambda: self.shide(self.groupBox_4))
         self.btn_closeGB5.clicked.connect(self.hide_GB5)
         self.calendarWidget.clicked.connect(self.get_date)
         self.btn_add_event.clicked.connect(lambda: self.ex.show())
         self.ex.btn_ok.clicked.connect(lambda: self.add_event(self.ex.le_name.text(), self.ex.le_desc.text(), self.clicked_year, self.clicked_month, self.clicked_day, self.ex.timeEdit.time().hour(), self.ex.timeEdit.time().minute()))
-   
+        self.btn_update_rows.clicked.connect(self.update_tasks)
     def fonts_init(self):
         font_GB = QFont('Manrope', 24)
         self.font_labels = QFont('Manrope', 14)
@@ -50,11 +50,50 @@ class MyWidget(QMainWindow, Form):
             el.setFont(self.font_labels)
         self.calendarWidget.setFont(font_calendar)
 
-
     def shide(self, GB):
         for i in self.tabs:
             i.hide()
         GB.show()
+
+    def get_tasks(self):
+        self.clearLayout(self.layout_todo)
+        self.clearLayout(self.layout_inprocess)
+        self.clearLayout(self.layout_done)
+        con = sqlite3.connect('Assets/Databases/main.sqlite3')
+        cur = con.cursor()
+        tasks = cur.execute("SELECT * FROM TASKS").fetchall()
+        for el in tasks:
+            self.add_row(el[2], el[1])    
+        
+        self.shide(self.groupBox_3)
+
+    def update_tasks(self):
+        con = sqlite3.connect('Assets/Databases/main.sqlite3')
+        cur = con.cursor()
+        cur.execute("DROP TABLE TASKS")
+        cur.execute('CREATE TABLE TASKS (ID INTEGER PRIMARY KEY AUTOINCREMENT, CONTENT TEXT DEFAULT "", COLUMN INT DEFAULT 1)')
+        for j in range(self.layout_todo.count() - 1):
+            layout = self.layout_todo.itemAt(j)
+            for i in range(layout.count()):
+                if isinstance(layout.itemAt(i).widget(), QLineEdit):
+                    text = layout.itemAt(i).widget().text()
+                    cur.execute("INSERT INTO TASKS (CONTENT, COLUMN) VALUES (?, ?)", (text, 1))
+        for j in range(self.layout_inprocess.count() - 1):
+            layout = self.layout_inprocess.itemAt(j)
+            for i in range(layout.count()):
+                if isinstance(layout.itemAt(i).widget(), QLineEdit):
+                    text = layout.itemAt(i).widget().text()
+                    cur.execute("INSERT INTO TASKS (CONTENT, COLUMN) VALUES (?, ?)", (text, 2))
+        for j in range(self.layout_done.count() - 1):
+            layout = self.layout_done.itemAt(j)
+            for i in range(layout.count()):
+                if isinstance(layout.itemAt(i).widget(), QLineEdit):
+                    text = layout.itemAt(i).widget().text()
+                    cur.execute("INSERT INTO TASKS (CONTENT, COLUMN) VALUES (?, ?)", (text, 3))
+        con.commit()
+        con.close()
+
+        
 
     def add_row(self, type, text):
         le = QLineEdit(self)
@@ -69,7 +108,7 @@ class MyWidget(QMainWindow, Form):
             self.setStyleBtn(btn_right)
             btn_delete = QPushButton(self)
             btn_delete.setText('X')
-            btn_delete.clicked.connect(lambda: self.delete_row(lt))
+            btn_delete.clicked.connect(lambda: self.delete_row(lt, type))
             self.setStyleBtn(btn_delete)
             btn_right.setFont(self.font_labels)
             btn_delete.setFont(self.font_labels)
@@ -84,7 +123,7 @@ class MyWidget(QMainWindow, Form):
             self.setStyleBtn(btn_left)
             btn_delete = QPushButton(self)
             btn_delete.setText('X')
-            btn_delete.clicked.connect(lambda: self.delete_row(lt))
+            btn_delete.clicked.connect(lambda: self.delete_row(lt, type))
             self.setStyleBtn(btn_delete)
             btn_right = QPushButton(self)
             btn_right.setText('->')
@@ -105,39 +144,51 @@ class MyWidget(QMainWindow, Form):
             self.setStyleBtn(btn_left)
             btn_delete = QPushButton(self)
             btn_delete.setText('X')
-            btn_delete.clicked.connect(lambda: self.delete_row(lt))
+            btn_delete.clicked.connect(lambda: self.delete_row(lt, type))
             self.setStyleBtn(btn_delete)
             btn_left.setFont(self.font_labels)
             btn_delete.setFont(self.font_labels)
             lt.addWidget(btn_left)
             lt.addWidget(le)
             lt.addWidget(btn_delete)
+        con = sqlite3.connect('Assets/Databases/main.sqlite3')
+        cur = con.cursor()
+        cur.execute("INSERT INTO TASKS (CONTENT, COLUMN) VALUES (?, ?)", (text, type))
+        con.commit()
+        con.close()
         self.clearSpacer(layout)
         layout.addLayout(lt)
         verticalSpacer = self.generate_spacer()
         layout.addItem(verticalSpacer)
 
     def transfer_row(self, row2, layout):
-        text = ''
+        text = self.get_text(layout)
+        self.delete_row(layout, row2)
+        self.add_row(row2, text)
+
+    def delete_row(self, layout, type):
+        text = self.get_text(layout)
+        con = sqlite3.connect('Assets/Databases/main.sqlite3')
+        cur = con.cursor()
+        cur.execute("DELETE FROM TASKS WHERE CONTENT = ? AND COLUMN = ?", (text, type))
+        con.commit()
+        con.close()
+        self.clearLayout(layout)
+        for i in range(layout.count()):
+            try:
+                if layout.parent().itemAt(i) is layout:
+                    layout.parent().removeItem(layout.parent().itemAt(i))
+            except:
+                pass
+
+    def get_text(self, layout):
         for i in range(layout.count()):
             if layout.itemAt(i).widget() is not None and isinstance(layout.itemAt(i).widget(), QLineEdit):
                 if layout.itemAt(i).widget() is not None:
                     text = layout.itemAt(i).widget().text()
                     break
-        
-        self.delete_row(layout)
-        self.add_row(row2, text)
+        return text
 
-    def delete_row(self, layout):
-        self.clearLayout(layout)
-        for i in range(layout.count()):
-            try:
-                if layout.parent().itemAt(i) is layout:
-                    print('here')
-                    print(layout.parent())
-                    layout.parent().removeItem(layout.parent().itemAt(i))
-            except:
-                pass
     def setStyleBtn(self, button):
         button.setStyleSheet("QPushButton:hover\n"
                              "{\n"
@@ -159,14 +210,14 @@ class MyWidget(QMainWindow, Form):
                 layout.removeItem(item)
     
     def clearLayout(self, layout):
-        layouts = []
-        for i in range(layout.count()):
-            if (type(layout.itemAt(i)) == QVBoxLayout):
-                self.clearLayout(layout.itemAt(i))
-                layouts.append(layout.itemAt(i))
-            else:
-                if (type(layout.itemAt(i)) == QWidgetItem):
-                    layout.itemAt(i).widget().close()
+        if layout is not None:
+            while layout.count():
+                item = layout.takeAt(0)
+                widget = item.widget()
+                if widget is not None:
+                    widget.deleteLater()
+                else:
+                    self.clearLayout(item.layout())
 
     def get_date(self):
         self.clearLayout(self.layout_events)
