@@ -202,7 +202,6 @@ class MyWidget(QMainWindow, Form):
             layouts[i].addWidget(cb[i])
             layouts[i].addWidget(btn_delete[i])
             self.layout_events.addLayout(layouts[i])
-        print(id)
         self.groupBox_5.show()
     
     def add_event(self, name, desc, year, month, day, hour, minute):
@@ -217,14 +216,13 @@ class MyWidget(QMainWindow, Form):
         self.ex.hide()
         self.get_date()
     
-    def delete_event(self, arg):
-        print(arg)
-        # con = sqlite3.connect('main.sqlite3')
-        # cur = con.cursor()
-        # cur.execute("DELETE FROM EVENTS WHERE ID = ?", (id,))
-        # con.commit()
-        # con.close()
-        # self.get_date()
+    def delete_event(self, id):
+        con = sqlite3.connect('Assets/Databases/main.sqlite3')
+        cur = con.cursor()
+        cur.execute("DELETE FROM EVENTS WHERE ID = ?", (id,))
+        con.commit()
+        con.close()
+        self.get_date()
 
     def hide_GB5(self):
         self.clearLayout(self.layout_events)
