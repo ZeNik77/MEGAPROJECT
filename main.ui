@@ -63,7 +63,7 @@ QPushButton
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>1.png</normaloff>1.png</iconset>
+          <normaloff>D:/MEGAPROJECT/Assets/Images/1.png</normaloff>D:/MEGAPROJECT/Assets/Images/1.png</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -94,7 +94,7 @@ QPushButton
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>2.png</normaloff>2.png</iconset>
+          <normaloff>D:/MEGAPROJECT/Assets/Images/2.png</normaloff>D:/MEGAPROJECT/Assets/Images/2.png</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -122,7 +122,7 @@ QPushButton
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>3.png</normaloff>3.png</iconset>
+          <normaloff>D:/MEGAPROJECT/Assets/Images/3.png</normaloff>D:/MEGAPROJECT/Assets/Images/3.png</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -153,7 +153,7 @@ QPushButton
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>4.png</normaloff>4.png</iconset>
+          <normaloff>D:/MEGAPROJECT/Assets/Images/4.png</normaloff>D:/MEGAPROJECT/Assets/Images/4.png</iconset>
         </property>
         <property name="iconSize">
          <size>
