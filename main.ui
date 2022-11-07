@@ -607,7 +607,7 @@ border-radius: 5px;</string>
      </property>
      <layout class="QVBoxLayout" name="layout_events"/>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>1090</x>

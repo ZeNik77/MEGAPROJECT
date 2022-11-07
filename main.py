@@ -2,9 +2,15 @@ import sys
 
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QTextEdit, QSpacerItem, QSizePolicy, QHBoxLayout, QVBoxLayout, QPushButton, QLabel, QCheckBox, QTimeEdit, QWidgetItem
 from PyQt5.QtGui import QFontDatabase, QFont
-from PyQt5.QtCore import QTime
+from PyQt5.QtCore import QTime, QDateTime
 from form2 import Ui_MainForm as Form
+from create_form import Ui_Form
 import sqlite3
+
+class Window2(QMainWindow, Ui_Form):
+    def __init__(self, parent=None):
+        super(Window2, self).__init__(parent)
+        self.setupUi(self)
 
 
 class MyWidget(QMainWindow, Form):
@@ -17,9 +23,9 @@ class MyWidget(QMainWindow, Form):
         for i in self.tabs:
             i.hide()
             # self.flag[i] = False
+        self.ex = Window2(self)
         self.btns_init()
         self.fonts_init()
-
     def btns_init(self):
         self.btn_todo.clicked.connect(lambda: self.add_row(self.layout_todo, 1))
         self.btn_inprocess.clicked.connect(lambda: self.add_row(self.layout_inprocess, 2))
@@ -29,7 +35,8 @@ class MyWidget(QMainWindow, Form):
         self.CalendarButton.clicked.connect(lambda: self.shide(self.groupBox_4))
         self.btn_closeGB5.clicked.connect(self.hide_GB5)
         self.calendarWidget.clicked.connect(self.get_date)
-        self.btn_add_event.clicked.connect(lambda: self.add_event(self.clicked_year, self.clicked_month, self.clicked_day))
+        self.btn_add_event.clicked.connect(lambda: self.ex.show())
+        self.ex.btn_ok.clicked.connect(lambda: self.add_event(self.ex.le_name.text(), self.ex.le_desc.text(), self.clicked_year, self.clicked_month, self.clicked_day, self.ex.timeEdit.time().hour(), self.ex.timeEdit.time().minute()))
     def fonts_init(self):
         font_GB = QFont('Manrope', 24)
         self.font_labels = QFont('Manrope', 18)
@@ -143,94 +150,91 @@ class MyWidget(QMainWindow, Form):
         cur = con.cursor()
         events = cur.execute(f"SELECT * FROM EVENTS WHERE YEAR = {self.clicked_year} AND  MONTH = {self.clicked_month} AND DAY = {self.clicked_day}").fetchall()
         font = QFont('Manrope', 14)
-        le_name = []
-        le_desc = []
+        label_name = []
+        label_desc = []
         label_time = []
         te = []
         cb = []
-        btn_update = []
+        btn_delete = []
         id = []
         name = []
         desc = []
         hour = []
         minute = []
         done = []
-        c = -1
-        for el in events:
-            c += 1
-            layout = QVBoxLayout()
-            id.append(el[0])
-            name.append(el[1])
-            desc.append(el[2])
-            # year.append(el[3])
-            # month.append(el[4])
-            # day.append(el[5])
-            hour.append(el[6])
-            minute.append(el[7])
-            done.append(el[8])
-            le_name.append(QLineEdit())
-            le_name[c].setFont(QFont('Manrope', 24))
-            le_name[c].setText(name[c])
+        layouts = []
+        for i in range(len(events)):
+            layouts.append(QVBoxLayout())
+            id.append(events[i][0])
+            name.append(events[i][1])
+            desc.append(events[i][2])
+            # year.append(events[i][3])
+            # month.append(events[i][4])
+            # day.append(events[i][5])
+            hour.append(events[i][6])
+            minute.append(events[i][7])
+            done.append(events[i][8])
+            label_name.append(QLabel())
+            label_name[i].setFont(QFont('Manrope', 24))
+            label_name[i].setText(name[i])
 
-            le_desc.append(QTextEdit())
-            le_desc[c].setFont(font)
-            le_desc[c].setText(desc[c])
+            label_desc.append(QLabel())
+            label_desc[i].setFont(font)
+            label_desc[i].setText(desc[i])
 
             label_time.append(QLabel())
-            label_time[c].setText('Дедлайн:')
-            label_time[c].setFont(font)
+            label_time[i].setText('Дедлайн:')
+            label_time[i].setFont(font)
 
             te.append(QTimeEdit())
-            te[c].setFont(font)
-            te[c].setTime(QTime(hour[c], minute[c], 00))
+            te[i].setFont(font)
+            te[i].setTime(QTime(hour[i], minute[i], 00))
 
             cb.append(QCheckBox())
 
-            btn_update.append(QPushButton())
-            btn_update[c].setFont(font)
-            btn_update[c].setText('Обновить')
-            self.setStyleBtn(btn_update[c])
+            btn_delete.append(QPushButton())
+            btn_delete[i].setFont(font)
+            btn_delete[i].setText('Удалить мероприятие')
+            self.setStyleBtn(btn_delete[i])
+            btn_delete[i].clicked.connect(lambda: self.delete_event(id[i]))
             
-            layout.addWidget(le_name[c])
-            layout.addWidget(le_desc[c])
-            layout.addWidget(label_time[c])
-            layout.addWidget(te[c])
-            layout.addWidget(cb[c])
-            layout.addWidget(btn_update[c])
-
-            layout.itemAt(layout.count() - 1).widget().clicked.connect(lambda: self.update_DB(id[c], name[c], desc[c], hour[c], minute[c], done[c])) # подключаем кнопку к функции обновления
-            layout.itemAt(4).widget().clicked.connect(lambda: self.update_DB(id[c], name[c], desc[c], hour[c], minute[c], not done[c])) # подключаем галочку к функции обновления
-            # да, массив лайаутов я уже делал
-
-            self.layout_events.addLayout(layout)
+            layouts[i].addWidget(label_name[i])
+            layouts[i].addWidget(label_desc[i])
+            layouts[i].addWidget(label_time[i])
+            layouts[i].addWidget(te[i])
+            layouts[i].addWidget(cb[i])
+            layouts[i].addWidget(btn_delete[i])
+            self.layout_events.addLayout(layouts[i])
         self.groupBox_5.show()
     
-    def add_event(self, year, month, day):
+    def add_event(self, name, desc, year, month, day, hour, minute):
         con = sqlite3.connect('main.sqlite3')
         cur = con.cursor()
-        cur.execute(f"INSERT INTO EVENTS (year, month, day) VALUES ({year}, {month}, {day})")
+        id = cur.execute("SELECT * FROM EVENTS").fetchall()[-1][0] + 1
+        cur.execute(f"INSERT INTO EVENTS VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", (id, name, desc, year, month, day, hour, minute, 0))
         con.commit()
         con.close()
+        self.ex.le_name.clear()
+        self.ex.le_desc.clear()
+        self.ex.hide()
         self.get_date()
-
-
-    def update_DB(self, id, name, desc, hour, minute, done):
-        #   name desc zuynya time zuynya zuynya
+    
+    def delete_event(self, *args):
+        print(args)
         # con = sqlite3.connect('main.sqlite3')
         # cur = con.cursor()
-        #   1 NAME 2 DESCRIPTION 6 HOUR 7 MINUTE 8 DONE 
-        print(id, name)
-        # cur.execute(f"UPDATE EVENTS SET NAME = {layout.itemAt(0).widget().text()}  WHERE id={id}")
-        # cur.execute(f"UPDATE EVENTS SET DESCRIPTION = {layout.itemAt(1).widget().toPlainText()} WHERE id={id}")
-        # cur.execute(f"UPDATE EVENTS SET HOUR = {layout.itemAt(3).widget().time().hour()} WHERE id={id}")
-        # cur.execute(f"UPDATE EVENTS SET MINUTE = {layout.itemAt(3).widget().time().minute()} WHERE id={id}")
-        # cur.execute(f"UPDATE EVENTSSET DONE = {done} WHERE id={id}")
+        # cur.execute("DELETE FROM EVENTS WHERE ID = ?", (id,))
         # con.commit()
         # con.close()
-        
+        # self.get_date()
+
     def hide_GB5(self):
         self.clearLayout(self.layout_events)
         self.groupBox_5.hide()
+
+    def show_window2(self):
+        self.ex.timeEdit.setDateTime(QDateTime(self.clicked_year, self.clicked_month, self.clicked_day))
+        self.ex.show()
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
