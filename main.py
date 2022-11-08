@@ -26,6 +26,7 @@ class MyWidget(QMainWindow, Form):
             i.hide()
             # self.flag[i] = False
         self.ex = Window2(self)
+        self.events_ref_point = 0
         self.btns_init()
         self.fonts_init()
 
@@ -222,6 +223,20 @@ class MyWidget(QMainWindow, Form):
                 else:
                     self.clearLayout(item.layout())
 
+    def prev_events(self):
+        if self.events_ref_point >= 2:
+            self.events_ref_point -= 2
+        else:
+            self.events_ref_point = 0
+        self.get_date()
+
+    def next_events(self, events):
+        if self.events_ref_point + 2 <= len(events):
+            self.events_ref_point += 2
+        else:
+            pass
+        self.get_date()
+
     def get_date(self):
         self.clearLayout(self.layout_events)
         self.clicked_year = self.calendarWidget.selectedDate().year()
@@ -246,7 +261,37 @@ class MyWidget(QMainWindow, Form):
         minute = []
         done = []
         layouts = []
-        for i in range(len(events)):
+        if len(events) > 2:
+            self.btn_next1 = QPushButton(self.groupBox_5)
+            self.btn_next1.setGeometry(self.width() - 110, self.height() - 40, 40, 40)
+            self.btn_next1.setStyleSheet("QPushButton:hover\n"
+                                         "{\n"
+                                         " background-color: #2a0f66;\n"
+                                         "}\n"
+                                         "QPushButton\n"
+                                         "{\n"
+                                         "    background-color:#32127a;\n"
+                                         "    border-radius: 3;\n"
+                                         "}")
+            self.btn_next1.setText('->')
+            self.btn_prev1 = QPushButton(self.groupBox_5)
+            self.btn_prev1.setGeometry(self.width() - 150, self.height() - 40, 40, 40)
+            self.btn_prev1.setStyleSheet("QPushButton:hover\n"
+                                         "{\n"
+                                         " background-color: #2a0f66;\n"
+                                         "}\n"
+                                         "QPushButton\n"
+                                         "{\n"
+                                         "    background-color:#32127a;\n"
+                                         "    border-radius: 3;\n"
+                                         "}")
+            self.btn_prev1.setText('<-')
+            self.btn_next1.clicked.connect(lambda: self.next_events(events))
+            self.btn_prev1.clicked.connect(self.prev_events)
+        start = self.events_ref_point
+        end = self.events_ref_point + 2 if self.events_ref_point + 2 <= len(events) else len(events)
+        v = 0
+        for i in range(start, end):
             layouts.append(QVBoxLayout())
             id.append(events[i][0])
             name.append(events[i][1])
@@ -255,35 +300,35 @@ class MyWidget(QMainWindow, Form):
             minute.append(events[i][7])
             done.append(events[i][8])
             label_name.append(QLabel())
-            label_name[i].setFont(QFont('Manrope', 24))
-            label_name[i].setText(name[i])
-
+            label_name[v].setFont(QFont('Manrope', 24))
+            label_name[v].setText(name[v])
             label_desc.append(QLabel())
-            label_desc[i].setFont(font)
-            label_desc[i].setText(desc[i])
-
+            label_desc[v].setFont(font)
+            label_desc[v].setText(desc[v])
             label_time.append(QLabel())
-            label_time[i].setText('Дедлайн:')
-            label_time[i].setFont(font)
+            label_time[v].setText('Дедлайн:')
+            label_time[v].setFont(font)
 
             te.append(QTimeEdit())
-            te[i].setFont(font)
-            te[i].setTime(QTime(hour[i], minute[i], 00))
+            te[v].setFont(font)
+            te[v].setTime(QTime(hour[v], minute[v], 00))
 
             cb.append(QCheckBox())
 
             btn_delete.append(QPushButton())
-            btn_delete[i].setFont(font)
-            btn_delete[i].setText('Удалить мероприятие')
-            self.setStyleBtn(btn_delete[i])
-            btn_delete[i].clicked.connect(lambda x, b=int(id[i]): self.delete_event(b))
-            layouts[i].addWidget(label_name[i])
-            layouts[i].addWidget(label_desc[i])
-            layouts[i].addWidget(label_time[i])
-            layouts[i].addWidget(te[i])
-            layouts[i].addWidget(cb[i])
-            layouts[i].addWidget(btn_delete[i])
-            self.layout_events.addLayout(layouts[i])
+            btn_delete[v].setFont(font)
+            btn_delete[v].setText('Удалить мероприятие')
+            self.setStyleBtn(btn_delete[v])
+
+            btn_delete[v].clicked.connect(lambda x, b=int(id[v]): self.delete_event(b))
+            layouts[v].addWidget(label_name[v])
+            layouts[v].addWidget(label_desc[v])
+            layouts[v].addWidget(label_time[v])
+            layouts[v].addWidget(te[v])
+            layouts[v].addWidget(cb[v])
+            layouts[v].addWidget(btn_delete[v])
+            self.layout_events.addLayout(layouts[v])
+            v += 1
         self.groupBox_5.show()
 
     def add_event(self, name, desc, year, month, day, hour, minute):
