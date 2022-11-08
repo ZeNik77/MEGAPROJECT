@@ -20,6 +20,7 @@ class Window2(QMainWindow, Ui_Form):
 
 class MyWidget(QMainWindow, Form):
     def __init__(self):
+        self.assistant_active = False
         QFontDatabase.addApplicationFont('Assets/font/regular.otf')
         super().__init__()
         self.setupUi(self)
@@ -51,8 +52,9 @@ class MyWidget(QMainWindow, Form):
         self.btn_update_rows.clicked.connect(self.update_tasks)
 
     def assistant_start(self):
-        assistant = VoiceAssistant()
-        threading.Thread(target=assistant.start).start()
+        if not self.assistant_active:
+            assistant = VoiceAssistant()
+            threading.Thread(target=assistant.start).start()
 
     def fonts_init(self):
         font_GB = QFont('Manrope', 24)
@@ -82,11 +84,7 @@ class MyWidget(QMainWindow, Form):
         tasks = cur.execute("SELECT * FROM TASKS").fetchall()
         for el in tasks:
             self.add_row(el[2], el[1])
-        verticalSpacer = self.generate_spacer()
 
-        self.layout_todo.addSpacerItem(verticalSpacer)
-        self.layout_inprocess.addSpacerItem(verticalSpacer)
-        self.layout_done.addSpacerItem(verticalSpacer)
         self.shide(self.groupBox_3)
 
     def update_tasks(self):
