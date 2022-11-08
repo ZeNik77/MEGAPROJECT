@@ -94,6 +94,10 @@ class VoiceAssistant:
                 plyer.notification.notify(message=f'До {events[i[1]][1]} остался час.',
                                           title='Уведомление')
                 self.last_notify = events[i[1]][1]
+            if int(i[0]) == 0 and self.last_notify != events[i[1]][1]:
+                plyer.notification.notify(message=f'Пришло время {events[i[1]][1]}',
+                                          title='Уведомление')
+                self.last_notify = events[i[1]][1]
 
     def test(self, text):
         print('test!')
