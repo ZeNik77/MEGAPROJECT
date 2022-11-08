@@ -1,3 +1,13 @@
 .venv
 .vscode
 __pycache__
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/inspectionProfiles/Project_Default.xml
+.idea/MEGAPROJECT.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
+__pycache__/form.cpython-39.pyc
+speech.mp3
+speech.mp3
