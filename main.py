@@ -230,8 +230,8 @@ class MyWidget(QMainWindow, Form):
             self.events_ref_point = 0
         self.get_date()
 
-    def next_events(self, events):
-        if self.events_ref_point + 2 <= len(events):
+    def next_events(self):
+        if self.events_ref_point + 2 < len(self.events):
             self.events_ref_point += 2
         else:
             pass
@@ -245,7 +245,7 @@ class MyWidget(QMainWindow, Form):
         self.groupBox_5.setTitle(f'Мероприятия на {self.clicked_day}.{self.clicked_month}.{self.clicked_year}:')
         con = sqlite3.connect('Assets/Databases/main.sqlite3')
         cur = con.cursor()
-        events = cur.execute(
+        self.events = cur.execute(
             f"SELECT * FROM EVENTS WHERE YEAR = {self.clicked_year} AND  MONTH = {self.clicked_month} AND DAY = {self.clicked_day}").fetchall()
         font = QFont('Manrope', 14)
         label_name = []
@@ -261,7 +261,7 @@ class MyWidget(QMainWindow, Form):
         minute = []
         done = []
         layouts = []
-        if len(events) > 2:
+        if len(self.events) > 2:
             self.btn_next1 = QPushButton(self.groupBox_5)
             self.btn_next1.setGeometry(self.width() - 110, self.height() - 40, 40, 40)
             self.btn_next1.setStyleSheet("QPushButton:hover\n"
@@ -286,21 +286,22 @@ class MyWidget(QMainWindow, Form):
                                          "    border-radius: 3;\n"
                                          "}")
             self.btn_prev1.setText('<-')
-            self.btn_next1.clicked.connect(lambda: self.next_events(events))
+            self.btn_next1.clicked.connect(self.next_events)
             self.btn_prev1.clicked.connect(self.prev_events)
         start = self.events_ref_point
-        end = self.events_ref_point + 2 if self.events_ref_point + 2 <= len(events) else len(events)
+        end = self.events_ref_point + 2 if self.events_ref_point + 2 <= len(self.events) else len(self.events)
+        print(len(self.events), self.events_ref_point)
         v = 0
         for i in range(start, end):
             layouts.append(QVBoxLayout())
-            id.append(events[i][0])
-            name.append(events[i][1])
-            desc.append(events[i][2])
-            hour.append(events[i][6])
-            minute.append(events[i][7])
-            done.append(events[i][8])
+            id.append(self.events[i][0])
+            name.append(self.events[i][1])
+            desc.append(self.events[i][2])
+            hour.append(self.events[i][6])
+            minute.append(self.events[i][7])
+            done.append(self.events[i][8])
             label_name.append(QLabel())
-            label_name[v].setFont(QFont('Manrope', 24))
+            label_name[v].setFont(QFont('Manrope', 14))
             label_name[v].setText(name[v])
             label_desc.append(QLabel())
             label_desc[v].setFont(font)
