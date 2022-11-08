@@ -75,7 +75,7 @@ class VoiceAssistant:
         self.speak('Перечисляю.')
         for i in events:
             if i[4] == month and i[5] == num:
-                self.speak(i[1])
+                self.speak(f'{i[1]} в {i[-3]} часов, {i[-2]} минут')
 
     def events_notify(self):
         con = sqlite3.connect('Assets/Databases/main.sqlite3')
