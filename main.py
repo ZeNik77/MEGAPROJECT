@@ -267,33 +267,32 @@ class MyWidget(QMainWindow, Form):
         minute = []
         done = []
         layouts = []
-        if len(self.events) > 2:
-            self.btn_next1 = QPushButton(self.groupBox_5)
-            self.btn_next1.setGeometry(self.width() - 110, self.height() - 40, 40, 40)
-            self.btn_next1.setStyleSheet("QPushButton:hover\n"
-                                         "{\n"
-                                         " background-color: #2a0f66;\n"
-                                         "}\n"
-                                         "QPushButton\n"
-                                         "{\n"
-                                         "    background-color:#32127a;\n"
-                                         "    border-radius: 3;\n"
-                                         "}")
-            self.btn_next1.setText('->')
-            self.btn_prev1 = QPushButton(self.groupBox_5)
-            self.btn_prev1.setGeometry(self.width() - 150, self.height() - 40, 40, 40)
-            self.btn_prev1.setStyleSheet("QPushButton:hover\n"
-                                         "{\n"
-                                         " background-color: #2a0f66;\n"
-                                         "}\n"
-                                         "QPushButton\n"
-                                         "{\n"
-                                         "    background-color:#32127a;\n"
-                                         "    border-radius: 3;\n"
-                                         "}")
-            self.btn_prev1.setText('<-')
-            self.btn_next1.clicked.connect(self.next_events)
-            self.btn_prev1.clicked.connect(self.prev_events)
+        self.btn_next1 = QPushButton(self.groupBox_5)
+        self.btn_next1.setGeometry(self.width() - 110, self.height() - 40, 40, 40)
+        self.btn_next1.setStyleSheet("QPushButton:hover\n"
+                                     "{\n"
+                                     " background-color: #2a0f66;\n"
+                                     "}\n"
+                                     "QPushButton\n"
+                                     "{\n"
+                                     "    background-color:#32127a;\n"
+                                     "    border-radius: 3;\n"
+                                     "}")
+        self.btn_next1.setText('->')
+        self.btn_prev1 = QPushButton(self.groupBox_5)
+        self.btn_prev1.setGeometry(self.width() - 150, self.height() - 40, 40, 40)
+        self.btn_prev1.setStyleSheet("QPushButton:hover\n"
+                                     "{\n"
+                                     " background-color: #2a0f66;\n"
+                                     "}\n"
+                                     "QPushButton\n"
+                                     "{\n"
+                                     "    background-color:#32127a;\n"
+                                     "    border-radius: 3;\n"
+                                     "}")
+        self.btn_prev1.setText('<-')
+        self.btn_next1.clicked.connect(self.next_events)
+        self.btn_prev1.clicked.connect(self.prev_events)
         start = self.events_ref_point
         end = self.events_ref_point + 2 if self.events_ref_point + 2 <= len(self.events) else len(self.events)
         print(len(self.events), self.events_ref_point)
