@@ -9,6 +9,7 @@ from PyQt5.QtCore import QTime, QDateTime
 from form import Ui_MainForm as Form
 from create_form import Ui_Form
 import sqlite3
+from assistant import *
 
 
 class Window2(QMainWindow, Ui_Form):
@@ -36,6 +37,7 @@ class MyWidget(QMainWindow, Form):
         self.btn_todo.clicked.connect(lambda: self.add_row(1, ''))
         self.btn_inprocess.clicked.connect(lambda: self.add_row(2, ''))
         self.btn_done.clicked.connect(lambda: self.add_row(3, ''))
+        self.HomeButton.clicked.connect(self.assistant_start)
         self.AboutButton.clicked.connect(lambda: self.shide(self.groupBox_2))
         self.TasksButton.clicked.connect(self.get_tasks)
         self.CalendarButton.clicked.connect(lambda: self.shide(self.groupBox_4))
@@ -47,6 +49,10 @@ class MyWidget(QMainWindow, Form):
                                    self.clicked_month, self.clicked_day, self.ex.timeEdit.time().hour(),
                                    self.ex.timeEdit.time().minute()))
         self.btn_update_rows.clicked.connect(self.update_tasks)
+
+    def assistant_start(self):
+        assistant = VoiceAssistant()
+        threading.Thread(target=assistant.start).start()
 
     def fonts_init(self):
         font_GB = QFont('Manrope', 24)
@@ -77,9 +83,9 @@ class MyWidget(QMainWindow, Form):
         for el in tasks:
             self.add_row(el[2], el[1])
         verticalSpacer = self.generate_spacer()
-        
+
         self.layout_todo.addSpacerItem(verticalSpacer)
-        self.layout_inprocess.addSpacerItem(verticalSpacer)        
+        self.layout_inprocess.addSpacerItem(verticalSpacer)
         self.layout_done.addSpacerItem(verticalSpacer)
         self.shide(self.groupBox_3)
 
