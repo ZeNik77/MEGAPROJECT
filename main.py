@@ -1,11 +1,13 @@
 import sys
 
-from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QTextEdit, QSpacerItem, QSizePolicy, QHBoxLayout, QVBoxLayout, QPushButton, QLabel, QCheckBox, QTimeEdit, QWidgetItem
+from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QTextEdit, QSpacerItem, QSizePolicy, QHBoxLayout, \
+    QVBoxLayout, QPushButton, QLabel, QCheckBox, QTimeEdit, QWidgetItem
 from PyQt5.QtGui import QFontDatabase, QFont
 from PyQt5.QtCore import QTime, QDateTime
 from form import Ui_MainForm as Form
 from create_form import Ui_Form
 import sqlite3
+
 
 class Window2(QMainWindow, Ui_Form):
     def __init__(self, parent=None):
@@ -26,6 +28,7 @@ class MyWidget(QMainWindow, Form):
         self.ex = Window2(self)
         self.btns_init()
         self.fonts_init()
+
     def btns_init(self):
         self.btn_todo.clicked.connect(lambda: self.add_row(1, ''))
         self.btn_inprocess.clicked.connect(lambda: self.add_row(2, ''))
@@ -36,14 +39,20 @@ class MyWidget(QMainWindow, Form):
         self.btn_closeGB5.clicked.connect(self.hide_GB5)
         self.calendarWidget.clicked.connect(self.get_date)
         self.btn_add_event.clicked.connect(lambda: self.ex.show())
-        self.ex.btn_ok.clicked.connect(lambda: self.add_event(self.ex.le_name.text(), self.ex.le_desc.text(), self.clicked_year, self.clicked_month, self.clicked_day, self.ex.timeEdit.time().hour(), self.ex.timeEdit.time().minute()))
+        self.ex.btn_ok.clicked.connect(
+            lambda: self.add_event(self.ex.le_name.text(), self.ex.le_desc.text(), self.clicked_year,
+                                   self.clicked_month, self.clicked_day, self.ex.timeEdit.time().hour(),
+                                   self.ex.timeEdit.time().minute()))
         self.btn_update_rows.clicked.connect(self.update_tasks)
+
     def fonts_init(self):
         font_GB = QFont('Manrope', 24)
         self.font_labels = QFont('Manrope', 14)
         font_calendar = QFont('Manrope', 14)
-        arr_lbl = [self.label_name, self.label_buttons, self.label_devs, self.btn_todo, self.btn_inprocess, self.btn_update_rows,
-                   self.btn_done, self.label_todo, self.label_inprocess, self.label_done, self.btn_closeGB5, self.btn_add_event]
+        arr_lbl = [self.label_name, self.label_buttons, self.label_devs, self.btn_todo, self.btn_inprocess,
+                   self.btn_update_rows,
+                   self.btn_done, self.label_todo, self.label_inprocess, self.label_done, self.btn_closeGB5,
+                   self.btn_add_event]
         for el in self.tabs:
             el.setFont(font_GB)
         for el in arr_lbl:
@@ -63,15 +72,16 @@ class MyWidget(QMainWindow, Form):
         cur = con.cursor()
         tasks = cur.execute("SELECT * FROM TASKS").fetchall()
         for el in tasks:
-            self.add_row(el[2], el[1])    
-        
+            self.add_row(el[2], el[1])
+
         self.shide(self.groupBox_3)
 
     def update_tasks(self):
         con = sqlite3.connect('Assets/Databases/main.sqlite3')
         cur = con.cursor()
         cur.execute("DROP TABLE TASKS")
-        cur.execute('CREATE TABLE TASKS (ID INTEGER PRIMARY KEY AUTOINCREMENT, CONTENT TEXT DEFAULT "", COLUMN INT DEFAULT 1)')
+        cur.execute(
+            'CREATE TABLE TASKS (ID INTEGER PRIMARY KEY AUTOINCREMENT, CONTENT TEXT DEFAULT "", COLUMN INT DEFAULT 1)')
         for j in range(self.layout_todo.count() - 1):
             layout = self.layout_todo.itemAt(j)
             for i in range(layout.count()):
@@ -92,8 +102,6 @@ class MyWidget(QMainWindow, Form):
                     cur.execute("INSERT INTO TASKS (CONTENT, COLUMN) VALUES (?, ?)", (text, 3))
         con.commit()
         con.close()
-
-        
 
     def add_row(self, type, text):
         le = QLineEdit(self)
@@ -151,11 +159,6 @@ class MyWidget(QMainWindow, Form):
             lt.addWidget(btn_left)
             lt.addWidget(le)
             lt.addWidget(btn_delete)
-        con = sqlite3.connect('Assets/Databases/main.sqlite3')
-        cur = con.cursor()
-        cur.execute("INSERT INTO TASKS (CONTENT, COLUMN) VALUES (?, ?)", (text, type))
-        con.commit()
-        con.close()
         self.clearSpacer(layout)
         layout.addLayout(lt)
         verticalSpacer = self.generate_spacer()
@@ -208,7 +211,7 @@ class MyWidget(QMainWindow, Form):
             item = layout.itemAt(i)
             if isinstance(item, QSpacerItem):
                 layout.removeItem(item)
-    
+
     def clearLayout(self, layout):
         if layout is not None:
             while layout.count():
@@ -227,7 +230,8 @@ class MyWidget(QMainWindow, Form):
         self.groupBox_5.setTitle(f'Мероприятия на {self.clicked_day}.{self.clicked_month}.{self.clicked_year}:')
         con = sqlite3.connect('Assets/Databases/main.sqlite3')
         cur = con.cursor()
-        events = cur.execute(f"SELECT * FROM EVENTS WHERE YEAR = {self.clicked_year} AND  MONTH = {self.clicked_month} AND DAY = {self.clicked_day}").fetchall()
+        events = cur.execute(
+            f"SELECT * FROM EVENTS WHERE YEAR = {self.clicked_year} AND  MONTH = {self.clicked_month} AND DAY = {self.clicked_day}").fetchall()
         font = QFont('Manrope', 14)
         label_name = []
         label_desc = []
@@ -281,7 +285,7 @@ class MyWidget(QMainWindow, Form):
             layouts[i].addWidget(btn_delete[i])
             self.layout_events.addLayout(layouts[i])
         self.groupBox_5.show()
-    
+
     def add_event(self, name, desc, year, month, day, hour, minute):
         con = sqlite3.connect('Assets/Databases/main.sqlite3')
         cur = con.cursor()
@@ -289,7 +293,8 @@ class MyWidget(QMainWindow, Form):
             id = cur.execute("SELECT * FROM EVENTS").fetchall()[-1][0] + 1
         except Exception as e:
             id = 0
-        cur.execute(f"INSERT INTO EVENTS VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", (id, name, desc, year, month, day, hour, minute, 0))
+        cur.execute(f"INSERT INTO EVENTS VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                    (id, name, desc, year, month, day, hour, minute, 0))
         con.commit()
         con.close()
         self.ex.le_name.clear()
@@ -312,6 +317,7 @@ class MyWidget(QMainWindow, Form):
     def show_window2(self):
         self.ex.timeEdit.setDateTime(QDateTime(self.clicked_year, self.clicked_month, self.clicked_day))
         self.ex.show()
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
