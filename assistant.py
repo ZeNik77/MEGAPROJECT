@@ -149,6 +149,7 @@ class VoiceAssistant:
         text = eval(data)['text']
         if text:
             text_inf = [morph.parse(i)[0].normal_form for i in text.split()]
+            print(text_inf)
             text_inf = ' '.join(text_inf)
             first_word = text_inf.split()[0]
             if self.request:
