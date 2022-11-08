@@ -1,5 +1,7 @@
 import sys
-
+import plyer
+import threading
+import datetime
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QTextEdit, QSpacerItem, QSizePolicy, QHBoxLayout, \
     QVBoxLayout, QPushButton, QLabel, QCheckBox, QTimeEdit, QWidgetItem
 from PyQt5.QtGui import QFontDatabase, QFont
@@ -307,7 +309,7 @@ class MyWidget(QMainWindow, Form):
             label_desc[v].setFont(font)
             label_desc[v].setText(desc[v])
             label_time.append(QLabel())
-            label_time[v].setText('Дедлайн:')
+            label_time[v].setText('Время:')
             label_time[v].setFont(font)
 
             te.append(QTimeEdit())
