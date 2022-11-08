@@ -76,7 +76,11 @@ class MyWidget(QMainWindow, Form):
         tasks = cur.execute("SELECT * FROM TASKS").fetchall()
         for el in tasks:
             self.add_row(el[2], el[1])
-
+        verticalSpacer = self.generate_spacer()
+        
+        self.layout_todo.addSpacerItem(verticalSpacer)
+        self.layout_inprocess.addSpacerItem(verticalSpacer)        
+        self.layout_done.addSpacerItem(verticalSpacer)
         self.shide(self.groupBox_3)
 
     def update_tasks(self):

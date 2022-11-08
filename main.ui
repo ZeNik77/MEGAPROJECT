@@ -40,8 +40,8 @@ border-radius: 5px;</string>
       <rect>
        <x>0</x>
        <y>30</y>
-       <width>71</width>
-       <height>721</height>
+       <width>1029</width>
+       <height>4112</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
@@ -526,6 +526,25 @@ QPushButton
       </item>
      </layout>
     </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_6">
+    <property name="geometry">
+     <rect>
+      <x>69</x>
+      <y>-1</y>
+      <width>1211</width>
+      <height>721</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #E6E697;
+border: 2px solid gray;
+padding: 10px;
+border-radius: 5px;</string>
+    </property>
+    <property name="title">
+     <string>Ассистент</string>
+    </property>
    </widget>
   </widget>
  </widget>
