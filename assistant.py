@@ -2,7 +2,6 @@ import datetime
 import os
 import sqlite3
 import sys
-
 import plyer
 from vosk import Model, KaldiRecognizer
 import pyaudio
@@ -53,10 +52,10 @@ def word_to_number(txt):
 
 class VoiceAssistant:
     def __init__(self):
-        self.commands = [[['сказать'], self.test],
-                         [['какой план', 'что запланировать', 'что будет'], self.events_check],
-                         [['завершить работа'], self.turn_off],
-                         [['что такой', 'что значит'], self.explain]]
+        self.commands = [
+            [['какой план', 'что запланировать', 'что будет'], self.events_check],
+            [['завершить работа'], self.turn_off],
+            [['что такой', 'что значит'], self.explain]]
         self.active = False
         self.last_notify = None
         self.name = name
@@ -98,10 +97,6 @@ class VoiceAssistant:
                 plyer.notification.notify(message=f'Пришло время {events[i[1]][1]}',
                                           title='Уведомление')
                 self.last_notify = events[i[1]][1]
-
-    def test(self, text):
-        print('test!')
-        self.speak('test!', 'ru')
 
     def turn_off(self, text):
         self.speak('выключаюсь')
